@@ -1,6 +1,6 @@
 {
-	"name": "vue-website",
-	"homepage": "https://github.com/begli-amanov/vue-website.git",
+	"name": "vue-monitor",
+	"homepage": "https://github.com/begli-amanov/vue-monitor.git",
 	"version": "0.0.0",
 	"private": "false",
 	"type": "module",
