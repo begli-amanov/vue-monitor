@@ -10,7 +10,9 @@
 			<label for="password">Password </label>
 			<input type="password" name="password" id="" placeholder="Password" />
 
-			<button class="button"><span class="pi pi-user"></span> Sign In</button>
+			<button v-ripple class="button">
+				<span class="pi pi-user"></span> Sign In
+			</button>
 		</form>
 	</div>
 </template>
