@@ -117,11 +117,15 @@ p {
 */
 
 :root {
-  --main-text-color: #fff;
+  --main-text-color: #f4f4f4;
   --border: .0625rem solid #616268;
-  --card-border-radius: .375rem;
+  --main-border-radius: .375rem;
   --card-background: #34343d;
   --page-padding: 2rem;
+  --card-padding: 1.3125rem;
+  --button-background-color: #f4f4f4;
+  --button-text-color: #1d1e27;
+  --button-border: .0625rem solid var(--button-background-color);
   --mobile-padding: 1rem;
   --emerald: #34d399;
   --hover-color: #6ee7b7;
@@ -135,7 +139,56 @@ p {
 
 /* LAYOUT */
 
+.wrapper,
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  height: 100vh;
+}
+
+.card {
+  flex-direction: column;
+}
+
 /* MODULES */
+
+.card {
+  border-radius: var(--main-border-radius);
+  background-color: var(--card-background);
+  padding: var(--card-padding);
+}
+
+label {
+  margin-bottom: .5rem;
+  font-size: .875rem;
+}
+
+.button,
+label {
+  font-weight: 500;
+}
+
+.button {
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: .4375rem .6563rem;
+  border: var(--button-border);
+  border-radius: var(--main-border-radius);
+  color: var(--button-text-color);
+  background: var(--button-background-color);
+  outline-color: transparent;
+  gap: .5rem;
+  width: 100%;
+}
 
 /* 
 ==========================================================================
