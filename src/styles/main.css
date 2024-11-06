@@ -73,7 +73,9 @@ img,
 picture,
 video,
 canvas,
-svg {
+svg,
+button,
+input {
   display: block;
   max-width: 100%;
 }
@@ -142,14 +144,26 @@ p {
 
 /* LAYOUT */
 
-.wrapper {
+.wrapper,
+.interactions,
+.button,
+.remember {
   display: flex;
   align-items: center;
+}
+
+.wrapper,
+.button {
   justify-content: center;
 }
 
 .wrapper {
   height: 100vh;
+}
+
+.interactions {
+  justify-content: space-between;
+  margin-bottom: 2.625rem;
 }
 
 /* MODULES */
@@ -158,10 +172,10 @@ p {
   border-radius: var(--main-border-radius);
   background-color: var(--card-background);
   padding: var(--card-padding);
+  width: 31.25rem;
 }
 
 label {
-  margin-bottom: .4375rem;
   font-size: .875rem;
   display: block;
 }
@@ -182,20 +196,21 @@ input {
 input {
   background-color: var(--secondary-color);
   border: var(--main-border);
-  margin-bottom: .875rem;
 }
 
 .button {
   display: inline-flex;
   cursor: pointer;
   user-select: none;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   position: relative;
   color: var(--secondary-color);
   background: var(--button-background-color);
   gap: .5rem;
+}
+
+.checkbox {
+  margin-right: .5rem;
 }
 
 /* 
