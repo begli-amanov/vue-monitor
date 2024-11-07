@@ -50,16 +50,12 @@
 */
 body {
   min-height: 100vh;
-  transition:
-    color 0.5s,
-    background-color 0.5s;
   font-family:
     'Inter Var',
     sans-serif;
   line-height: 1.5;
   font-size: 1rem;
-  background-color: var(--secondary-color);
-  color: var(--main-text-color);
+  color: var(--main-color);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -121,19 +117,19 @@ p {
 */
 
 :root {
-  --main-text-color: #f4f4f4;
+  --main-color: #f4f4f4;
+  --secondary-color: #1d1e27;
   --main-border: .0625rem solid #616268;
   --main-border-radius: .375rem;
-  --card-background: #34343d;
   --page-padding: 2rem;
-  --card-padding: 1.3125rem;
-  --input-padding: .4375rem .6563rem;
-  --button-background-color: #f4f4f4;
-  --secondary-color: #1d1e27;
-  --button-border: .0625rem solid var(--button-background-color);
   --mobile-padding: 1rem;
+  --card-padding: 1.3125rem;
+  --card-background: #34343d;
+  --input-padding: .4375rem .6563rem;
   --emerald: #34d399;
-  --hover-color: #6ee7b7;
+  --button-border: .0625rem solid var(--main-color);
+  --button-hover-color: #bbbcbe;
+  --box-shadow: 0 0 #0000, 0 0 #0000, 0 .0625rem .125rem 0 rgba(18, 18, 23, 0.05);
 }
 
 /* 
@@ -144,10 +140,13 @@ p {
 
 /* LAYOUT */
 
+.wrapper {
+  height: 100vh;
+}
+
 .wrapper,
 .interactions,
-.button,
-.remember {
+.button {
   display: flex;
   align-items: center;
 }
@@ -157,26 +156,86 @@ p {
   justify-content: center;
 }
 
-.wrapper {
-  height: 100vh;
-}
-
 .interactions {
   justify-content: space-between;
   margin-bottom: 2.625rem;
 }
 
-/* MODULES */
-
-.card {
-  border-radius: var(--main-border-radius);
-  background-color: var(--card-background);
-  padding: var(--card-padding);
-  width: 31.25rem;
+.remember,
+.button {
+  position: relative;
+  display: inline-flex;
+  user-select: none;
 }
 
 .input-label {
   margin-bottom: .5rem;
+}
+
+/* MODULES */
+
+.card {
+  width: 31.25rem;
+  background-color: var(--card-background);
+  padding: var(--card-padding);
+  box-shadow: var(--box-shadow);
+}
+
+.card,
+.button,
+input {
+  border-radius: var(--main-border-radius);
+}
+
+.button {
+  border: var(--button-border);
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+  overflow: hidden;
+  gap: .5rem;
+
+  &:hover {
+    background-color: var(--button-hover-color);
+    border-color: var(--button-hover-color);
+  }
+}
+
+.button,
+input {
+  width: 100%;
+  padding: var(--input-padding);
+  transition: background-color .2s, color .2s, border-color .2s, outline-color .2s, box-shadow .2s;
+}
+
+.button,
+label,
+h2,
+a {
+  font-weight: 600;
+}
+
+a:hover,
+a:focus,
+a:active {
+  outline: none;
+  color: #34d399;
+}
+
+body,
+input {
+  background-color: var(--secondary-color);
+}
+
+input {
+  margin-bottom: 1rem;
+  border: var(--main-border);
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    border: .0625rem solid var(--main-color);
+  }
 }
 
 ::placeholder,
@@ -187,44 +246,40 @@ button {
   display: block;
 }
 
-.button,
-label,
-h2,
-a {
+::placeholder {
   font-weight: 500;
 }
 
-.button,
-input {
-  padding: var(--input-padding);
-  border-radius: var(--main-border-radius);
-  outline-color: transparent;
-  width: 100%;
+/* these rules are necessary to style the checkbox the way I wished */
+.p-checkbox {
+  margin-right: .375rem;
 }
 
-input {
-  background-color: var(--secondary-color);
-  border: var(--main-border);
-  margin-bottom: 1rem;
+.p-checkbox-box {
+  border: .0625rem solid var(--main-color) !important;
 }
 
-.checkbox,
-.button {
-  position: relative;
-  display: inline-flex;
-  user-select: none;
+.p-checkbox-checked .p-checkbox-box {
+  border-color: var(--main-color) !important;
+  background: var(--main-color) !important;
 }
 
-.button {
-  cursor: pointer;
-  overflow: hidden;
-  color: var(--secondary-color);
-  background: var(--button-background-color);
-  gap: .5rem;
+.p-checkbox-checked .p-checkbox-icon {
+  color: var(--secondary-color) !important;
 }
 
-.checkbox {
-  margin-right: .5rem;
+.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-icon {
+  color: var(--secondary-color) !important;
+}
+
+.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover) .p-checkbox-box {
+  background: var(--main-color) !important;
+  border-color: var(--main-color) !important;
+}
+
+.p-checkbox:not(.p-disabled):has(.p-checkbox-input:focus-visible) .p-checkbox-box {
+  outline: .0625rem solid var(--main-color) !important;
+  outline-offset: .125rem !important;
 }
 
 /* 
