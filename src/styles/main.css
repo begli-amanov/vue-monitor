@@ -175,13 +175,22 @@ p {
   width: 31.25rem;
 }
 
-label {
+.input-label {
+  margin-bottom: .5rem;
+}
+
+::placeholder,
+label,
+a,
+button {
   font-size: .875rem;
   display: block;
 }
 
 .button,
-label {
+label,
+h2,
+a {
   font-weight: 500;
 }
 
@@ -196,14 +205,19 @@ input {
 input {
   background-color: var(--secondary-color);
   border: var(--main-border);
+  margin-bottom: 1rem;
+}
+
+.checkbox,
+.button {
+  position: relative;
+  display: inline-flex;
+  user-select: none;
 }
 
 .button {
-  display: inline-flex;
   cursor: pointer;
-  user-select: none;
   overflow: hidden;
-  position: relative;
   color: var(--secondary-color);
   background: var(--button-background-color);
   gap: .5rem;

@@ -16,4 +16,6 @@
 
 #TODO:
 
-1.  Make `h3` element bigger and add "Remember me" with checkbox and forgot password container.
+1.  Make `h3` element bigger and add "Remember me" with checkbox and forgot password container. Done!
+
+2.  Find out how to change color of checkbox.
