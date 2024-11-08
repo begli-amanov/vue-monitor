@@ -23,10 +23,7 @@ const checked = ref(true);
 
 				<a href="/vue-monitor">Forgot your password?</a>
 			</div>
-
-			<button v-ripple class="button">
-				<span class="pi pi-user"></span> Sign In
-			</button>
+			<Button label="Sing In" icon="pi pi-user" />
 		</form>
 	</div>
 </template>

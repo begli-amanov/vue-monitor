@@ -2,13 +2,6 @@
 export default {
 	content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	theme: {
-		extend: {},
-	},
-	plugins: [require('tailwindcss-primeui')],
-};
-
-module.exports = {
-	theme: {
 		fontFamily: {
 			sans: [
 				'Inter var, sans-serif',
@@ -18,5 +11,7 @@ module.exports = {
 				},
 			],
 		},
+		extend: {},
 	},
+	plugins: [require('tailwindcss-primeui')],
 };
