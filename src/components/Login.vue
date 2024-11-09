@@ -11,15 +11,16 @@ const checked = ref(true);
 				<Form>
 					<h2 class="heading-2">Welcome Back</h2>
 					<label for="username" class="input-label">Username </label>
-					<InputText type="text" placeholder="Username" />
+					<InputText type="text" placeholder="Username" id="username" />
 
 					<label for="password" class="input-label">Password </label>
 					<Password
-						type="text"
+						type="password"
 						placeholder="Password"
 						:feedback="false"
 						toggleMask
 						fluid
+						id="password"
 					/>
 
 					<div class="interactions">
