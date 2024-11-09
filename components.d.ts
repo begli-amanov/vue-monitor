@@ -8,16 +8,14 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
+    Card: typeof import('primevue/card')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
+    Form: typeof import('@primevue/forms/form')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Login: typeof import('./src/components/Login.vue')['default']
     Message: typeof import('primevue/message')['default']
     Password: typeof import('primevue/password')['default']
-    Ripple: typeof import('primevue/ripple')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-  }
-  export interface ComponentCustomProperties {
-    Ripple: typeof import('primevue/ripple')['default']
   }
 }

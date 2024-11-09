@@ -1,36 +1,47 @@
 <script setup lang="ts">
+import { useToast } from 'primevue/usetoast';
 import { ref } from 'vue';
-
 const checked = ref(true);
 </script>
 
 <template>
 	<div class="wrapper">
-		<form class="card">
-			<h2 class="heading-2">Welcome Back</h2>
-			<label for="email" class="input-label" s>Email </label>
-			<input type="email" name="email" id="email" placeholder="Email address" />
+		<Card class="card">
+			<template #content>
+				<Form>
+					<h2 class="heading-2">Welcome Back</h2>
+					<label for="username" class="input-label">Username </label>
+					<InputText type="text" placeholder="Username" />
 
-			<label for="password" class="input-label">Password </label>
-			<input type="password" name="password" id="password" />
+					<label for="password" class="input-label">Password </label>
+					<Password
+						type="text"
+						placeholder="Password"
+						:feedback="false"
+						toggleMask
+						fluid
+					/>
 
-			<div class="interactions">
-				<div class="remember">
-					<Checkbox :binary="true" v-model="checked" />
+					<div class="interactions">
+						<div class="remember">
+							<Checkbox :binary="true" v-model="checked" />
 
-					<label for="">Remember me</label>
-				</div>
+							<label for="checkbox">Remember me</label>
+						</div>
 
-				<a href="/vue-monitor">Forgot your password?</a>
-			</div>
-			<Button label="Sing In" icon="pi pi-user" />
-		</form>
+						<a href="/vue-monitor">Forgot your password?</a>
+					</div>
+					<Button label="Sing In" icon="pi pi-user" />
+				</Form>
+			</template>
+		</Card>
 	</div>
 </template>
 
 <style scoped>
 .heading-2 {
 	font-size: 1.64rem;
+	font-weight: 600;
 	line-height: 2rem;
 	margin-top: 1rem;
 }

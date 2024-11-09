@@ -11,11 +11,27 @@ import Ripple from 'primevue/ripple';
 
 // Variables and Function
 const app = createApp(App);
+const Noir = definePreset(Aura, {
+	// components: {
+	// 	button: {
+	// 		colorScheme: {
+	// 			dark: {
+	// 				primaryBackground: '{surface.50}',
+	// 			},
+	// 		},
+	// 	},
 
-app.use(PrimeVue, {
-	theme: {
-		preset: Aura,
+	// 	checkbox: {
+	// 		colorScheme: {
+	// 			dark: {
+	// 				checkedBackground: '{surface.50}',
+	// 				checkedHoverBackground: '{surface.50}',
+	// 			},
+	// 		},
+	// 	},
+	// },
 
+	semantic: {
 		colorScheme: {
 			// for future light mode switcher
 			light: {},
@@ -51,7 +67,14 @@ app.use(PrimeVue, {
 				},
 			},
 		},
+	},
+});
+
+app.use(PrimeVue, {
+	theme: {
+		preset: Noir,
 		options: {
+			prefix: 'p',
 			darkModeSelector: '.my-app-dark',
 		},
 	},

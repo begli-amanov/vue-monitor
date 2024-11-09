@@ -116,7 +116,14 @@ p {
 ==========================================================================
 */
 
-:root[class="my-app-dark"] {}
+:root[class="my-app-dark"] {
+  --p-button-primary-background: var(--p-surface-50);
+  --p-checkbox-checked-background: var(--p-surface-50);
+  --p-checkbox-checked-hover-background: var(--p-surface-50);
+
+
+  background-color: var(--p-surface-950);
+}
 
 /* 
 ==========================================================================
@@ -130,15 +137,50 @@ p {
   height: 100vh;
 }
 
-.wrapper,
-.interactions,
-.button {
-  display: flex;
-  align-items: center;
+input {
+  margin-bottom: 1rem;
+}
+
+input,
+button {
+  width: 100%;
+}
+
+label,
+::placeholder,
+a {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+label {
+  display: block;
+}
+
+.p-checkbox {
+  margin-right: .5rem;
 }
 
 .wrapper,
-.button {
+.interactions {
+  display: flex;
+}
+
+.remember,
+.wrapper,
+.interactions {
+  align-items: center;
+}
+
+.remember {
+  display: inline-flex;
+}
+
+.card {
+  width: 31.25rem;
+}
+
+.wrapper {
   justify-content: center;
 }
 
@@ -147,15 +189,17 @@ p {
   margin-bottom: 2.625rem;
 }
 
-.remember,
-.button {
+.remember {
   position: relative;
-  display: inline-flex;
   user-select: none;
 }
 
 .input-label {
   margin-bottom: .5rem;
+}
+
+.p-password-toggle-mask-icon {
+  top: 38% !important;
 }
 
 /* MODULES */
