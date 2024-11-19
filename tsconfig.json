@@ -1,13 +1,13 @@
 {
 	"files": [],
-	"include": [
-		"**/*.ts",
-		"**/*.js",
-		"**/*.d.ts",
-		"**/*.tsx",
-		"**/*.vue",
-		"tests/setup.ts"
-	],
+	// "include": [
+	// 	"**/*.ts",
+	// 	"**/*.js",
+	// 	"**/*.d.ts",
+	// 	"**/*.tsx",
+	// 	"**/*.vue",
+	// 	"tests/setup.ts"
+	// ],
 	"references": [
 		{
 			"path": "./tsconfig.node.json"
