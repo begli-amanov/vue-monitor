@@ -4,10 +4,10 @@
 ==========================================================================
 */
 
-@import "primeicons/primeicons.css";
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'primeicons/primeicons.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* 
 ==========================================================================
@@ -16,8 +16,8 @@
 */
 
 @font-face {
-  font-family: 'Inter Var';
-  src: url('../fonts/InterVar.ttf');
+	font-family: 'Inter Var';
+	src: url('../fonts/InterVar.ttf');
 }
 
 /* 
@@ -32,15 +32,15 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  font-weight: normal;
+	box-sizing: border-box;
+	font-weight: normal;
 }
 
 /*
   2. Remove default margin
 */
 * {
-  margin: 0;
+	margin: 0;
 }
 
 /*
@@ -49,17 +49,15 @@
   4. Improve text rendering
 */
 body {
-  min-height: 100vh;
-  font-family:
-    'Inter Var',
-    sans-serif;
-  line-height: 1.5;
-  font-size: 1rem;
-  color: var(--main-color);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
+	min-height: 100vh;
+	font-family: 'Inter Var', sans-serif;
+	line-height: 1.5;
+	font-size: 1rem;
+	color: var(--main-color);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
 }
 
 /*
@@ -72,8 +70,8 @@ canvas,
 svg,
 button,
 input {
-  display: block;
-  max-width: 100%;
+	display: block;
+	max-width: 100%;
 }
 
 /*
@@ -83,7 +81,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+	font: inherit;
 }
 
 /*
@@ -96,18 +94,17 @@ h4,
 h5,
 h6,
 p {
-  overflow-wrap: break-word;
-  margin-bottom: .875rem;
-  text-align: center;
+	overflow-wrap: break-word;
+	margin-bottom: 0.875rem;
+	text-align: center;
 }
-
 
 /*
   8. Create a root stacking context
 */
 #root,
 #__next {
-  isolation: isolate;
+	isolation: isolate;
 }
 
 /* 
@@ -116,13 +113,13 @@ p {
 ==========================================================================
 */
 
-:root[class="my-app-dark"] {
-  --p-button-primary-background: var(--p-surface-50);
-  --p-checkbox-checked-background: var(--p-surface-50);
-  --p-checkbox-checked-hover-background: var(--p-surface-50);
+:root[class='my-app-dark'] {
+	--p-button-primary-background: var(--p-surface-50);
+	--p-checkbox-checked-background: var(--p-surface-50);
+	--p-checkbox-checked-hover-background: var(--p-surface-50);
+	--p-button-primary-border-color: var(--p-surface-50);
 
-
-  background-color: var(--p-surface-950);
+	background-color: var(--p-surface-950);
 }
 
 /* 
@@ -134,76 +131,75 @@ p {
 /* LAYOUT */
 
 .wrapper {
-  height: 100vh;
+	height: 100vh;
 }
 
 input {
-  margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 
 input,
 button {
-  width: 100%;
+	width: 100%;
 }
 
 label,
 ::placeholder,
 a {
-  font-size: 1rem;
-  font-weight: 500;
+	font-size: 1rem;
+	font-weight: 500;
 }
 
 label {
-  display: block;
+	display: block;
 }
 
 .p-checkbox {
-  margin-right: .5rem;
+	margin-right: 0.5rem;
 }
 
 .wrapper,
 .interactions {
-  display: flex;
+	display: flex;
 }
 
 .remember,
 .wrapper,
 .interactions {
-  align-items: center;
+	align-items: center;
 }
 
 .remember {
-  display: inline-flex;
+	display: inline-flex;
 }
 
 .card {
-  width: 31.25rem;
+	width: 31.25rem;
 }
 
 .wrapper {
-  justify-content: center;
+	justify-content: center;
 }
 
 .interactions {
-  justify-content: space-between;
-  margin-bottom: 2.625rem;
+	justify-content: space-between;
+	margin-bottom: 2.625rem;
 }
 
 .remember {
-  position: relative;
-  user-select: none;
+	position: relative;
+	user-select: none;
 }
 
 .input-label {
-  margin-bottom: .5rem;
+	margin-bottom: 0.5rem;
 }
 
 .p-password-toggle-mask-icon {
-  top: 38% !important;
+	top: 38% !important;
 }
 
 /* MODULES */
-
 
 /* 
 ==========================================================================
@@ -212,13 +208,17 @@ label {
 */
 
 /*  320px ---> 767px */
-@media only screen and (min-width: 20rem) and (max-width: 47.9375rem) {}
+@media only screen and (min-width: 20rem) and (max-width: 47.9375rem) {
+}
 
 /*  768px ---> 1023px */
-@media only screen and (min-width: 48rem) and (max-width: 63.9375rem) {}
+@media only screen and (min-width: 48rem) and (max-width: 63.9375rem) {
+}
 
 /*  1024px ---> 1439px */
-@media only screen and (min-width: 64rem) and (max-width: 89.9375rem) {}
+@media only screen and (min-width: 64rem) and (max-width: 89.9375rem) {
+}
 
 /*  1440px ---> 2560px */
-@media only screen and (min-width: 90rem) and (max-width: 160rem) {}
+@media only screen and (min-width: 90rem) and (max-width: 160rem) {
+}
