@@ -27,34 +27,7 @@ const Noir = definePreset(Aura, {
 			950: '{surface.950}',
 		},
 		colorScheme: {
-			// light: {
-			// 	primary: {
-			// 		color: '{primary.950}',
-			// 		contrastColor: '#ffffff',
-			// 		hoverColor: '{primary.900}',
-			// 		activeColor: '{primary.800}',
-			// 	},
-			// 	highlight: {
-			// 		background: '{primary.950}',
-			// 		focusBackground: '{primary.700}',
-			// 		color: '#ffffff',
-			// 		focusColor: '#ffffff',
-			// 	},
-			// 	surface: {
-			// 		0: '#ffffff',
-			// 		50: '#f4f4f4',
-			// 		100: '#e8e9e9',
-			// 		200: '#d2d2d4',
-			// 		300: '#bbbcbe',
-			// 		400: '#a5a5a9',
-			// 		500: '#8e8f93',
-			// 		600: '#77787d',
-			// 		700: '#616268',
-			// 		800: '#4a4b52',
-			// 		900: '#34343d',
-			// 		950: '#1d1e27',
-			// 	},
-			// },
+			light: {},
 			dark: {
 				surface: {
 					0: '#ffffff',

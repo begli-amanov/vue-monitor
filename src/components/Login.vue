@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useToast } from 'primevue/usetoast';
 import { ref } from 'vue';
 const checked = ref(true);
 </script>
