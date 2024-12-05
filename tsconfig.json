@@ -6,8 +6,11 @@
 	// 	"**/*.d.ts",
 	// 	"**/*.tsx",
 	// 	"**/*.vue",
-	// 	"tests/setup.ts"
 	// ],
+
+	"compilerOptions": {
+		"allowJs": true
+	},
 	"references": [
 		{
 			"path": "./tsconfig.node.json"
