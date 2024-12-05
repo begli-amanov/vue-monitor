@@ -1,4 +1,4 @@
-<script setup lang="js">
+<script setup>
 import { ProductService } from '@/services/ProductService';
 import { FilterMatchMode } from '@primevue/core/api';
 import Toolbar from 'primevue/toolbar';
