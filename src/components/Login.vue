@@ -1,48 +1,67 @@
 <script setup lang="ts">
+import Button from 'primevue/button';
+import Checkbox from 'primevue/checkbox';
+import InputText from 'primevue/inputtext';
+
 import { ref } from 'vue';
+
 const checked = ref(true);
 </script>
 
 <template>
 	<div class="wrapper">
-		<Card class="card">
-			<template #content>
-				<Form>
-					<h2 class="heading-2">Welcome Back</h2>
-					<label for="username" class="input-label">Username </label>
-					<InputText type="text" placeholder="Username" id="username" />
+		<div class="bg-surface-950 px-6 py-20 md:px-12 lg:px-20">
+			<div class="bg-surface-900 p-6 shadow rounded-border login-form">
+				<div class="text-center">
+					<div class="text-surface-50 text-3xl font-medium mt-2 mb-4">
+						Welcome Back
+					</div>
+				</div>
 
-					<label for="password" class="input-label">Password </label>
+				<div>
+					<label for="email" class="text-surface-50 font-medium mb-2 block"
+						>Email</label
+					>
+					<InputText
+						id="email"
+						type="text"
+						placeholder="Email address"
+						class="w-full mb-4"
+					/>
+
+					<label for="password" class="text-surface-50 font-medium mb-2 block"
+						>Password</label
+					>
 					<Password
-						type="password"
+						type="text"
 						placeholder="Password"
 						:feedback="false"
 						toggleMask
 						fluid
-						id="password"
+						class="w-full mb-4"
 					/>
 
-					<div class="interactions">
-						<div class="remember">
-							<Checkbox :binary="true" v-model="checked" />
-
-							<label for="checkbox">Remember me</label>
+					<div class="flex items-center justify-between mb-12">
+						<div class="flex items-center">
+							<Checkbox
+								id="remember"
+								v-model="checked"
+								:binary="true"
+								class="mr-2"
+							/>
+							<label for="remember">Remember me</label>
 						</div>
-
-						<a href="/vue-monitor">Forgot your password?</a>
+						<a
+							class="font-medium no-underline ml-2 text-primary text-right cursor-pointer"
+							>Forgot password?</a
+						>
 					</div>
-					<Button label="Sing In" icon="pi pi-user" />
-				</Form>
-			</template>
-		</Card>
+
+					<RouterLink to="/">
+						<Button label="Sign In" icon="pi pi-user" class="w-full" />
+					</RouterLink>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
-
-<style scoped>
-.heading-2 {
-	font-size: 1.64rem;
-	font-weight: 600;
-	line-height: 2rem;
-	margin-top: 1rem;
-}
-</style>

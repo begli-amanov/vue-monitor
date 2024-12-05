@@ -11,17 +11,6 @@
 
 /* 
 ==========================================================================
-   FONT IMPORT
-==========================================================================
-*/
-
-@font-face {
-	font-family: 'Inter Var';
-	src: url('../fonts/InterVar.ttf');
-}
-
-/* 
-==========================================================================
    MODERN CSS RESET BY JOSH COMEAU
 ==========================================================================
 */
@@ -33,7 +22,6 @@
 *::before,
 *::after {
 	box-sizing: border-box;
-	font-weight: normal;
 }
 
 /*
@@ -43,18 +31,14 @@
 	margin: 0;
 }
 
-/*
-  Typographic tweaks!
-  3. Add accessible line-height
-  4. Improve text rendering
-*/
 body {
 	min-height: 100vh;
-	font-family: 'Inter Var', sans-serif;
+	/* 3. Add accessible line-height */
 	line-height: 1.5;
 	font-size: 1rem;
-	color: var(--main-color);
 	text-rendering: optimizeLegibility;
+
+	/* 4. Improve text rendering */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
@@ -122,103 +106,13 @@ p {
 	background-color: var(--p-surface-950);
 }
 
-/* 
-==========================================================================
-   CLASSES AND ELEMENTS
-==========================================================================
-*/
-
-/* LAYOUT */
-
 .wrapper {
 	height: 100vh;
-}
-
-input {
-	margin-bottom: 1rem;
-}
-
-input,
-button {
-	width: 100%;
-}
-
-label,
-::placeholder,
-a {
-	font-size: 1rem;
-	font-weight: 500;
-}
-
-label {
-	display: block;
-}
-
-.p-checkbox {
-	margin-right: 0.5rem;
-}
-
-.wrapper,
-.interactions {
 	display: flex;
-}
-
-.remember,
-.wrapper,
-.interactions {
+	justify-content: center;
 	align-items: center;
 }
 
-.remember {
-	display: inline-flex;
-}
-
-.card {
+.login-form {
 	width: 31.25rem;
-}
-
-.wrapper {
-	justify-content: center;
-}
-
-.interactions {
-	justify-content: space-between;
-	margin-bottom: 2.625rem;
-}
-
-.remember {
-	position: relative;
-	user-select: none;
-}
-
-.input-label {
-	margin-bottom: 0.5rem;
-}
-
-.p-password-toggle-mask-icon {
-	top: 38% !important;
-}
-
-/* MODULES */
-
-/* 
-==========================================================================
-   MEDIA QUERIES
-==========================================================================
-*/
-
-/*  320px ---> 767px */
-@media only screen and (min-width: 20rem) and (max-width: 47.9375rem) {
-}
-
-/*  768px ---> 1023px */
-@media only screen and (min-width: 48rem) and (max-width: 63.9375rem) {
-}
-
-/*  1024px ---> 1439px */
-@media only screen and (min-width: 64rem) and (max-width: 89.9375rem) {
-}
-
-/*  1440px ---> 2560px */
-@media only screen and (min-width: 90rem) and (max-width: 160rem) {
 }

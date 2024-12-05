@@ -7,7 +7,10 @@ import './styles/main.css';
 import { definePreset } from '@primevue/themes';
 import Aura from '@primevue/themes/aura';
 import PrimeVue from 'primevue/config';
+import ConfirmationService from 'primevue/confirmationservice';
+import DialogService from 'primevue/dialogservice';
 import Ripple from 'primevue/ripple';
+import ToastService from 'primevue/toastservice';
 
 // Variables and Function
 const app = createApp(App);
@@ -53,6 +56,9 @@ export default Noir;
 app.directive('ripple', Ripple);
 app.use(router);
 app.mount('#app');
+app.use(ConfirmationService);
+app.use(ToastService);
+app.use(DialogService);
 
 app.use(PrimeVue, {
 	theme: {
