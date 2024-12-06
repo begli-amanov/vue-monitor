@@ -1,5 +1,5 @@
 <script setup>
-import { ProductService } from '@/services/ProductService';
+import { LicenseService } from '@/services/LicenseService';
 import { FilterMatchMode } from '@primevue/core/api';
 import ConfirmPopup from 'primevue/confirmpopup';
 import Toolbar from 'primevue/toolbar';
@@ -8,7 +8,7 @@ import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
 
 onMounted(() => {
-	ProductService.getProducts().then((data) => (products.value = data));
+	LicenseService.getProducts().then((data) => (products.value = data));
 });
 
 const confirm = useConfirm();
@@ -25,9 +25,9 @@ const filters = ref({
 });
 const submitted = ref(false);
 const statuses = ref([
-	{ label: 'INSTOCK', value: 'INSTOCK' },
-	{ label: 'LOWSTOCK', value: 'LOWSTOCK' },
-	{ label: 'OUTOFSTOCK', value: 'OUTOFSTOCK' },
+	{ label: 'VALID', value: 'VALID' },
+	{ label: 'EXPIRING SOON', value: 'EXPIRING SOON' },
+	{ label: 'EXPIRED', value: 'EXPIRED' },
 ]);
 
 const formatCurrency = (value) => {
@@ -68,7 +68,7 @@ const saveProduct = () => {
 			// product.value.image = 'product-placeholder.svg';
 			product.value.inventoryStatus = product.value.inventoryStatus
 				? product.value.inventoryStatus.value
-				: 'INSTOCK';
+				: 'VALID';
 			products.value.push(product.value);
 			toast.add({
 				severity: 'success',
@@ -142,13 +142,13 @@ const deleteSelectedProducts = () => {
 
 const getStatusLabel = (status) => {
 	switch (status) {
-		case 'INSTOCK':
+		case 'VALID':
 			return 'success';
 
-		case 'LOWSTOCK':
+		case 'EXPIRING SOON':
 			return 'warn';
 
-		case 'OUTOFSTOCK':
+		case 'EXPIRED':
 			return 'danger';
 
 		default:
