@@ -11,7 +11,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 24,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1001',
@@ -23,7 +23,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 61,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1002',
@@ -35,7 +35,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 2,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1003',
@@ -47,7 +47,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 25,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1004',
@@ -59,7 +59,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 73,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1005',
@@ -71,7 +71,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1006',
@@ -83,7 +83,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 5,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1007',
@@ -95,7 +95,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 23,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1008',
@@ -107,7 +107,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 2,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1009',
@@ -119,7 +119,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 63,
 				inventoryStatus: 'INSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1010',
@@ -131,7 +131,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1011',
@@ -143,7 +143,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 23,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1012',
@@ -155,7 +155,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 74,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1013',
@@ -167,7 +167,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1014',
@@ -179,7 +179,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 8,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1015',
@@ -191,7 +191,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 34,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1016',
@@ -203,7 +203,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 12,
 				inventoryStatus: 'INSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1017',
@@ -215,7 +215,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 42,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1018',
@@ -227,7 +227,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 41,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1019',
@@ -239,7 +239,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 63,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1020',
@@ -251,7 +251,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1021',
@@ -263,7 +263,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 6,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1022',
@@ -275,7 +275,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 62,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1023',
@@ -287,7 +287,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 2,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1024',
@@ -299,7 +299,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 0,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1025',
@@ -311,7 +311,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 52,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 			},
 			{
 				id: '1026',
@@ -323,7 +323,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 3,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1027',
@@ -335,7 +335,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 35,
 				inventoryStatus: 'INSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 			},
 			{
 				id: '1028',
@@ -347,7 +347,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 15,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 			},
 			{
 				id: '1029',
@@ -359,7 +359,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 25,
 				inventoryStatus: 'INSTOCK',
-				rating: 8,
+				expiryDate: 8,
 			},
 		];
 	},
@@ -376,7 +376,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 24,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [
 					{
 						id: '1000-0',
@@ -426,7 +426,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 61,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1001-0',
@@ -458,7 +458,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 2,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [
 					{
 						id: '1002-0',
@@ -490,7 +490,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 25,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [],
 			},
 			{
@@ -503,7 +503,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 73,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1004-0',
@@ -535,7 +535,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1005-0',
@@ -576,7 +576,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 5,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [
 					{
 						id: '1006-0',
@@ -608,7 +608,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 23,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [
 					{
 						id: '1007-0',
@@ -631,7 +631,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 2,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1008-0',
@@ -663,7 +663,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 63,
 				inventoryStatus: 'INSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [
 					{
 						id: '1009-0',
@@ -713,7 +713,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1010-0',
@@ -745,7 +745,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 23,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1011-0',
@@ -768,7 +768,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 74,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [
 					{
 						id: '1012-0',
@@ -800,7 +800,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [
 					{
 						id: '1013-0',
@@ -823,7 +823,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 8,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [
 					{
 						id: '1014-0',
@@ -855,7 +855,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 34,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1015-0',
@@ -878,7 +878,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 12,
 				inventoryStatus: 'INSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [],
 			},
 			{
@@ -891,7 +891,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 42,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1017-0',
@@ -914,7 +914,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 41,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [
 					{
 						id: '1018-0',
@@ -946,7 +946,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 63,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [],
 			},
 			{
@@ -959,7 +959,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 0,
 				inventoryStatus: 'OUTOFSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1020-0',
@@ -991,7 +991,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 6,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [
 					{
 						id: '1021-0',
@@ -1014,7 +1014,7 @@ export const ProductService = {
 				category: 'Accessories',
 				quantity: 62,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1022-0',
@@ -1046,7 +1046,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 2,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [
 					{
 						id: '1023-0',
@@ -1069,7 +1069,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 0,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [],
 			},
 			{
@@ -1082,7 +1082,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 52,
 				inventoryStatus: 'INSTOCK',
-				rating: 4,
+				expiryDate: '24-04-2024',
 				orders: [
 					{
 						id: '1025-0',
@@ -1114,7 +1114,7 @@ export const ProductService = {
 				category: 'Clothing',
 				quantity: 3,
 				inventoryStatus: 'LOWSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [
 					{
 						id: '1026-0',
@@ -1137,7 +1137,7 @@ export const ProductService = {
 				category: 'Electronics',
 				quantity: 35,
 				inventoryStatus: 'INSTOCK',
-				rating: 3,
+				expiryDate: '23-03-2023',
 				orders: [
 					{
 						id: '1027-0',
@@ -1169,7 +1169,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 15,
 				inventoryStatus: 'INSTOCK',
-				rating: 5,
+				expiryDate: '25-10-2025',
 				orders: [],
 			},
 			{
@@ -1182,7 +1182,7 @@ export const ProductService = {
 				category: 'Fitness',
 				quantity: 25,
 				inventoryStatus: 'INSTOCK',
-				rating: 8,
+				expiryDate: 8,
 				orders: [
 					{
 						id: '1029-0',

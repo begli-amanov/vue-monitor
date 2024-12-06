@@ -1,7 +1,9 @@
 <script setup>
 import { ProductService } from '@/services/ProductService';
 import { FilterMatchMode } from '@primevue/core/api';
+import ConfirmPopup from 'primevue/confirmpopup';
 import Toolbar from 'primevue/toolbar';
+import { useConfirm } from 'primevue/useconfirm';
 import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
 
@@ -9,6 +11,7 @@ onMounted(() => {
 	ProductService.getProducts().then((data) => (products.value = data));
 });
 
+const confirm = useConfirm();
 const toast = useToast();
 const dt = ref();
 const products = ref();
@@ -22,16 +25,16 @@ const filters = ref({
 });
 const submitted = ref(false);
 const statuses = ref([
-	{ label: 'INSTOCK', value: 'instock' },
-	{ label: 'LOWSTOCK', value: 'lowstock' },
-	{ label: 'OUTOFSTOCK', value: 'outofstock' },
+	{ label: 'INSTOCK', value: 'INSTOCK' },
+	{ label: 'LOWSTOCK', value: 'LOWSTOCK' },
+	{ label: 'OUTOFSTOCK', value: 'OUTOFSTOCK' },
 ]);
 
 const formatCurrency = (value) => {
 	if (value)
 		return value.toLocaleString('en-US', {
 			style: 'currency',
-			currency: 'USD',
+			currency: 'EUR',
 		});
 	return;
 };
@@ -62,7 +65,7 @@ const saveProduct = () => {
 		} else {
 			product.value.id = createId();
 			product.value.code = createId();
-			product.value.image = 'product-placeholder.svg';
+			// product.value.image = 'product-placeholder.svg';
 			product.value.inventoryStatus = product.value.inventoryStatus
 				? product.value.inventoryStatus.value
 				: 'INSTOCK';
@@ -267,6 +270,12 @@ const getStatusLabel = (status) => {
 						/>
 					</template>
 				</Column>
+				<Column
+					field="expiryDate"
+					header="Expiry Date"
+					sortable
+					style="min-width: 10rem"
+				></Column>
 				<Column :exportable="false" style="min-width: 12rem" header="Actions">
 					<template #body="slotProps">
 						<Button
