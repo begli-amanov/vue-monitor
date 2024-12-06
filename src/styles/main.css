@@ -113,6 +113,8 @@ p {
 	--p-checkbox-checked-background: var(--p-surface-50);
 	--p-checkbox-checked-hover-background: var(--p-surface-50);
 	--p-button-primary-border-color: var(--p-surface-50);
+	--p-paginator-nav-button-selected-background: var(--p-surface-50);
+	--p-paginator-nav-button-selected-color: var(--p-surface-950);
 
 	background-color: var(--p-surface-950);
 }
