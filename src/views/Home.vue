@@ -156,8 +156,8 @@ const getStatusLabel = (status) => {
 
 <template>
 	<div>
-		<div>
-			<Toolbar class="mb-6">
+		<div class="bg-surface-900 p-4">
+			<Toolbar class="mb-4">
 				<template #start>
 					<Button label="New" icon="pi pi-plus" class="mr-2" @click="openNew" />
 					<Button
@@ -185,7 +185,7 @@ const getStatusLabel = (status) => {
 					<Button
 						label="Export"
 						icon="pi pi-upload"
-						severity="secondary"
+						severity="primary"
 						@click="exportCSV($event)"
 					/>
 				</template>
@@ -392,7 +392,7 @@ const getStatusLabel = (status) => {
 							id="price"
 							v-model="product.price"
 							mode="currency"
-							currency="USD"
+							currency="EUR"
 							locale="en-US"
 							fluid
 						/>
