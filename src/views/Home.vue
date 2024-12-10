@@ -170,10 +170,11 @@ const getStatusLabel = (status) => {
 </script>
 
 <template>
+	<!-- reference cards start here -->
 	<div class="bg-surface-950 px-4 pt-6">
 		<div class="grid grid-cols-12 gap-4">
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
-				<div class="bg-surface-900 shadow p-4 rounded-border">
+				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
 							<span class="block text-surface-400 font-medium mb-4"
@@ -192,7 +193,7 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
-				<div class="bg-surface-900 shadow p-4 rounded-border">
+				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
 							<span class="block text-surface-400 font-medium mb-4"
@@ -211,7 +212,7 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
-				<div class="bg-surface-900 shadow p-4 rounded-border">
+				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
 							<span class="block text-surface-400 font-medium mb-4"
@@ -230,7 +231,7 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
-				<div class="bg-surface-900 shadow p-4 rounded-border">
+				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
 							<span class="block text-surface-400 font-medium mb-4"
@@ -250,10 +251,17 @@ const getStatusLabel = (status) => {
 			</div>
 		</div>
 	</div>
+
+	<!-- toolbar starts here -->
 	<div class="bg-surface-950 p-4">
 		<Toolbar class="mb-4">
 			<template #start>
-				<Button label="New" icon="pi pi-plus" class="mr-2" @click="openNew" />
+				<Button
+					label="New"
+					icon="pi pi-pen-to-square"
+					class="mr-2"
+					@click="openNew"
+				/>
 				<Button
 					label="Delete"
 					icon="pi pi-trash"
@@ -276,16 +284,16 @@ const getStatusLabel = (status) => {
 					auto
 					:chooseButtonProps="{ severity: 'secondary' }"
 				/>
-				<Button
+				<!-- <Button
 					label="Export"
 					icon="pi pi-upload"
 					severity="primary"
 					class="mr-2"
 					@click="exportCSV($event)"
-				/>
+				/> -->
 
 				<!-- signout button, a better place for this button? -->
-				<Button label="Sign Out" icon="pi pi-sign-out" severity="danger" />
+				<Button label="Log Out" icon="pi pi-power-off" severity="danger" />
 			</template>
 		</Toolbar>
 
@@ -326,12 +334,7 @@ const getStatusLabel = (status) => {
 				style="width: 3rem"
 				:exportable="false"
 			></Column>
-			<Column
-				field="name"
-				header="Name"
-				sortable
-				style="min-width: 16rem"
-			></Column>
+			<Column field="name" header="Name" sortable></Column>
 			<!-- <Column header="Image">
 					<template #body="slotProps">
 						<img
@@ -353,12 +356,7 @@ const getStatusLabel = (status) => {
 				sortable
 				style="min-width: 10rem"
 			></Column>
-			<Column
-				field="inventoryStatus"
-				header="Status"
-				sortable
-				style="min-width: 12rem"
-			>
+			<Column field="inventoryStatus" header="Status" sortable>
 				<template #body="slotProps">
 					<Tag
 						:value="slotProps.data.inventoryStatus"
@@ -372,7 +370,19 @@ const getStatusLabel = (status) => {
 				sortable
 				style="min-width: 10rem"
 			></Column>
-			<Column :exportable="false" style="min-width: 12rem" header="Actions">
+			<Column
+				field="vendor"
+				header="Vendor"
+				sortable
+				style="min-width: 10rem"
+			></Column>
+			<Column
+				field="manufacturer"
+				header="Manufacturer"
+				sortable
+				style="min-width: 10rem"
+			></Column>
+			<Column :exportable="false" header="Actions">
 				<template #body="slotProps">
 					<Button
 						icon="pi pi-pencil"

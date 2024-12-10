@@ -31,12 +31,13 @@
   }
 ```
 
-4. FIX the messages that are not appearing, when deleting, editing or saving changes on Licenses.
-5. Add Expiring date on Modals. DONE! [x]
-6. Add Comments.
-7. Preselect on `Select` to show the current status of a License. DONE (optionValue with `const = statuses` was the solution) [x]
-8. While saving new expiry date, table shows an entire date including time.
-9. CANNOT register new components!!!
-10. Paginator has rounded corners and table it self don't.
-11. Add Filters from the first table.
-12. Add all necessary Columns to adapt to needs of our firm.
+- Add Expiring date on Modals. DONE!
+- Paginator has rounded corners and table it self don't. DONE!
+- Add all necessary Columns to adapt to needs of our firm. DONE!
+- Preselect on `Select` to show the current status of a License. (optionValue with `const = statuses` was the solution). DONE!
+
+- Add Comments.
+- While saving new expiry date, table shows an entire date including time.
+- CANNOT register new components!!!
+- Add Filters from the first table.
+- FIX the messages that are not appearing, when deleting, editing or saving changes on Licenses.
