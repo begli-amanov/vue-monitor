@@ -5,6 +5,7 @@ import Toolbar from 'primevue/toolbar';
 import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
 
+// similar to Angular onInit function
 onMounted(() => {
 	LicenseService.getLicenses().then((data) => (licenses.value = data));
 });
@@ -18,7 +19,7 @@ const deleteLicenseDialog = ref(false);
 const deleteLicensesDialog = ref(false);
 const selectedLicenses = ref();
 
-// for searchbar
+// for search bar
 const filters = ref({
 	global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
@@ -130,6 +131,7 @@ const createId = () => {
 	return id;
 };
 
+// was used to export CSV File. Disabled right now.
 const exportCSV = () => {
 	dt.value.exportCSV();
 };
