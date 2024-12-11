@@ -41,3 +41,4 @@
 - CANNOT register new components!!!
 - Add Filters from the first table.
 - FIX the messages that are not appearing, when deleting, editing or saving changes on Licenses.
+- When creating new product/license, the width of selects for manufacturer and vendor are dynamic. Should be static.

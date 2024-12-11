@@ -32,6 +32,18 @@ const statuses = ref([
 	{ label: 'EXPIRED', value: 'EXPIRED' },
 ]);
 
+const vendors = ref([
+	{ label: 'DVEAS', value: 'DVEAS' },
+	{ label: 'SIDEFX', value: 'SIDEFX' },
+	{ label: 'FOUNDRY', value: 'FOUNDRY' },
+]);
+
+const manufacturers = ref([
+	{ label: 'AUTODESK', value: 'AUTODESK' },
+	{ label: 'SIDEFX', value: 'SIDEFX' },
+	{ label: 'FOUNDRY', value: 'FOUNDRY' },
+]);
+
 const formatCurrency = (value) => {
 	if (value)
 		return value.toLocaleString('en-US', {
@@ -268,7 +280,6 @@ const getStatusLabel = (status) => {
 					label="Delete"
 					icon="pi pi-trash"
 					severity="danger"
-					outlined
 					@click="confirmDeleteSelected"
 					:disabled="!selectedLicenses || !selectedLicenses.length"
 				/>
@@ -456,6 +467,37 @@ const getStatusLabel = (status) => {
 					placeholder="Select a Status"
 					fluid
 				></Select>
+			</div>
+
+			<!-- manufacturer and vendor select -->
+			<div class="flex gap-2">
+				<div class="flex-1">
+					<label for="vendor" class="block font-bold mb-3">Vendor</label>
+					<Select
+						id="vendor"
+						v-model="license.vendor"
+						:options="vendors"
+						optionLabel="label"
+						optionValue="value"
+						placeholder="Select a Vendor"
+						fluid
+					></Select>
+				</div>
+
+				<div class="flex-1">
+					<label for="manufacturer" class="block font-bold mb-3"
+						>Manufacturer</label
+					>
+					<Select
+						id="manufacturer"
+						v-model="license.manufacturer"
+						:options="manufacturers"
+						optionLabel="label"
+						optionValue="value"
+						placeholder="Select a Manufacturer"
+						fluid
+					></Select>
+				</div>
 			</div>
 
 			<!-- datepicker -->
