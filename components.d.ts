@@ -25,5 +25,6 @@ declare module 'vue' {
     Select: typeof import('primevue/select')['default']
     Tag: typeof import('primevue/tag')['default']
     Textarea: typeof import('primevue/textarea')['default']
+    Toast: typeof import('primevue/toast')['default']
   }
 }

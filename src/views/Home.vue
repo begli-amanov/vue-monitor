@@ -82,7 +82,6 @@ const saveLicense = () => {
 		} else {
 			license.value.id = createId();
 			license.value.code = createId();
-			// license.value.image = 'license-placeholder.svg';
 			license.value.inventoryStatus = license.value.inventoryStatus
 				? license.value.inventoryStatus.value
 				: 'VALID';
@@ -141,11 +140,6 @@ const createId = () => {
 		id += chars.charAt(Math.floor(Math.random() * chars.length));
 	}
 	return id;
-};
-
-// was used to export CSV File. Disabled right now.
-const exportCSV = () => {
-	dt.value.exportCSV();
 };
 
 const confirmDeleteSelected = () => {
@@ -297,14 +291,6 @@ const getStatusLabel = (status) => {
 					auto
 					:chooseButtonProps="{ severity: 'secondary' }"
 				/>
-				<!-- <Button
-					label="Export"
-					icon="pi pi-upload"
-					severity="primary"
-					class="mr-2"
-					@click="exportCSV($event)"
-				/> -->
-
 				<!-- signout button, a better place for this button? -->
 				<Button label="Log Out" icon="pi pi-power-off" severity="danger" />
 			</template>
@@ -338,37 +324,36 @@ const getStatusLabel = (status) => {
 							placeholder="Search..."
 						/>
 					</IconField>
-					<!-- <h4 class="m-0">Manage Licenses</h4> -->
 				</div>
 			</template>
+
+			<!-- no matching results message -->
 			<template #empty> No licenses found. </template>
 			<Column
 				selectionMode="multiple"
 				style="width: 3rem"
 				:exportable="false"
 			></Column>
+
+			<!-- Name column -->
 			<Column field="name" header="Name" sortable></Column>
-			<!-- <Column header="Image">
-					<template #body="slotProps">
-						<img
-							:src="`https://primefaces.org/cdn/primevue/images/license/${slotProps.data.image}`"
-							:alt="slotProps.data.image"
-							class="rounded"
-							style="width: 64px"
-						/>
-					</template>
-				</Column> -->
+
+			<!-- WBS column -->
+			<Column
+				field="code"
+				header="WBS"
+				sortable
+				style="min-width: 10rem"
+			></Column>
+
+			<!-- Price column -->
 			<Column field="price" header="Price" sortable style="min-width: 8rem">
 				<template #body="slotProps">
 					{{ formatCurrency(slotProps.data.price) }}
 				</template>
 			</Column>
-			<Column
-				field="category"
-				header="Category"
-				sortable
-				style="min-width: 10rem"
-			></Column>
+
+			<!-- Status column -->
 			<Column field="inventoryStatus" header="Status" sortable>
 				<template #body="slotProps">
 					<Tag
@@ -377,24 +362,32 @@ const getStatusLabel = (status) => {
 					/>
 				</template>
 			</Column>
+
+			<!-- Expiry column -->
 			<Column
 				field="expiryDate"
 				header="Expiry Date"
 				sortable
 				style="min-width: 10rem"
 			></Column>
+
+			<!-- Vendor column -->
 			<Column
 				field="vendor"
 				header="Vendor"
 				sortable
 				style="min-width: 10rem"
 			></Column>
+
+			<!-- Manufacturer column -->
 			<Column
 				field="manufacturer"
 				header="Manufacturer"
 				sortable
 				style="min-width: 10rem"
 			></Column>
+
+			<!-- Actions column -->
 			<Column :exportable="false" header="Actions">
 				<template #body="slotProps">
 					<Button
@@ -415,6 +408,7 @@ const getStatusLabel = (status) => {
 				</template>
 			</Column>
 		</DataTable>
+		<Toast />
 	</div>
 
 	<!-- modal dialog for edition and creation of a new license -->
@@ -424,7 +418,7 @@ const getStatusLabel = (status) => {
 		header="License Details"
 		:modal="true"
 	>
-		<div class="flex flex-col gap-6">
+		<div class="flex flex-col gap-4">
 			<div>
 				<label for="name" class="block font-bold mb-3">Name</label>
 				<InputText
@@ -440,12 +434,10 @@ const getStatusLabel = (status) => {
 				>
 			</div>
 			<div>
-				<label for="description" class="block font-bold mb-3"
-					>Description</label
-				>
+				<label for="notes" class="block font-bold mb-3">Notes</label>
 				<Textarea
-					id="description"
-					v-model="license.description"
+					id="notes"
+					v-model="license.notes"
 					required="true"
 					rows="3"
 					cols="20"
@@ -457,21 +449,20 @@ const getStatusLabel = (status) => {
 					>Inventory Status</label
 				>
 
-				<!-- both: optionValue value and optionLabel are from statuses object -->
+				<!-- optionValue value is from const statuses -->
 				<Select
 					id="inventoryStatus"
 					v-model="license.inventoryStatus"
 					:options="statuses"
 					optionLabel="label"
-					optionValue="value"
 					placeholder="Select a Status"
 					fluid
 				></Select>
 			</div>
 
 			<!-- manufacturer and vendor select -->
-			<div class="flex gap-2">
-				<div class="flex-1">
+			<div class="grid grid-cols-12 gap-4">
+				<div class="col-span-6">
 					<label for="vendor" class="block font-bold mb-3">Vendor</label>
 					<Select
 						id="vendor"
@@ -483,8 +474,7 @@ const getStatusLabel = (status) => {
 						fluid
 					></Select>
 				</div>
-
-				<div class="flex-1">
+				<div class="col-span-6">
 					<label for="manufacturer" class="block font-bold mb-3"
 						>Manufacturer</label
 					>
@@ -515,6 +505,7 @@ const getStatusLabel = (status) => {
 				/>
 			</div>
 
+			<!-- categories radio buttons -->
 			<div>
 				<span class="block font-bold mb-4">Category</span>
 				<div class="grid grid-cols-12 gap-4">
@@ -582,8 +573,19 @@ const getStatusLabel = (status) => {
 		</div>
 
 		<template #footer>
-			<Button label="Cancel" icon="pi pi-times" text @click="hideDialog" />
-			<Button label="Save" icon="pi pi-check" @click="saveLicense" />
+			<Button
+				label="Cancel"
+				icon="pi pi-times"
+				outlined
+				@click="hideDialog"
+				class="modal-inline-component mt-5"
+			/>
+			<Button
+				label="Save"
+				icon="pi pi-save"
+				@click="saveLicense"
+				class="modal-inline-component mt-5"
+			/>
 		</template>
 	</Dialog>
 
@@ -605,10 +607,17 @@ const getStatusLabel = (status) => {
 			<Button
 				label="No"
 				icon="pi pi-times"
-				text
+				outlined
 				@click="deleteLicenseDialog = false"
+				class="modal-inline-component"
 			/>
-			<Button label="Yes" icon="pi pi-check" @click="deleteLicense" />
+
+			<Button
+				label="Yes"
+				icon="pi pi-check"
+				@click="deleteLicense"
+				class="modal-inline-component"
+			/>
 		</template>
 	</Dialog>
 
@@ -629,14 +638,15 @@ const getStatusLabel = (status) => {
 			<Button
 				label="No"
 				icon="pi pi-times"
-				text
+				outlined
 				@click="deleteLicensesDialog = false"
+				class="modal-inline-component"
 			/>
 			<Button
 				label="Yes"
 				icon="pi pi-check"
-				text
 				@click="deleteSelectedLicenses"
+				class="modal-inline-component"
 			/>
 		</template>
 	</Dialog>

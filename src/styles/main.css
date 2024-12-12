@@ -138,6 +138,10 @@ p {
 	border: 0.0625rem solid var(--p-surface-700);
 }
 
+.modal-inline-component {
+	min-width: 49%;
+}
+
 /* primevue classes overridden */
 
 .p-datatable-header {
