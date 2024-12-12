@@ -307,12 +307,13 @@ const getStatusLabel = (status) => {
 			showGridlines
 			dataKey="id"
 			:filters="filters"
-			:rows="15"
+			:rows="10"
 			paginator
 			paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-			:rowsPerPageOptions="[5, 15, 25]"
+			:rowsPerPageOptions="[5, 10, 25]"
 			currentPageReportTemplate="Showing {first} to {last} of {totalRecords} licenses"
 		>
+			<!-- search input -->
 			<template #header>
 				<div class="flex flex-wrap gap-2 items-center justify-center">
 					<IconField>
@@ -347,12 +348,12 @@ const getStatusLabel = (status) => {
 			<Column
 				field="wbs"
 				header="WBS"
-				style="min-width: 8rem"
+				style="min-width: 10rem"
 				sortable
 			></Column>
 
 			<!-- Price column -->
-			<Column field="price" header="Price" sortable>
+			<Column field="price" header="Price" style="min-width: 8rem" sortable>
 				<template #body="slotProps">
 					{{ formatCurrency(slotProps.data.price) }}
 				</template>
