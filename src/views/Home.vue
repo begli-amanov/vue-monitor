@@ -69,9 +69,9 @@ const saveLicense = () => {
 
 	if (license?.value.name?.trim()) {
 		if (license.value.id) {
-			license.value.inventoryStatus = license.value.inventoryStatus.value
-				? license.value.inventoryStatus.value
-				: license.value.inventoryStatus;
+			license.value.licenseStatus = license.value.licenseStatus.value
+				? license.value.licenseStatus.value
+				: license.value.licenseStatus;
 			licenses.value[findIndexById(license.value.id)] = license.value;
 			toast.add({
 				severity: 'success',
@@ -81,9 +81,9 @@ const saveLicense = () => {
 			});
 		} else {
 			license.value.id = createId();
-			license.value.code = createId();
-			license.value.inventoryStatus = license.value.inventoryStatus
-				? license.value.inventoryStatus.value
+			license.value.wbs = createId();
+			license.value.licenseStatus = license.value.licenseStatus
+				? license.value.licenseStatus.value
 				: 'VALID';
 			licenses.value.push(license.value);
 			toast.add({
@@ -296,7 +296,7 @@ const getStatusLabel = (status) => {
 			</template>
 		</Toolbar>
 
-		<!-- here begins table itself -->
+		<!-- here begins data table itself -->
 		<DataTable
 			ref="dt"
 			v-model:selection="selectedLicenses"
@@ -307,10 +307,10 @@ const getStatusLabel = (status) => {
 			showGridlines
 			dataKey="id"
 			:filters="filters"
-			:rows="10"
+			:rows="15"
 			paginator
 			paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-			:rowsPerPageOptions="[5, 10, 25]"
+			:rowsPerPageOptions="[5, 15, 25]"
 			currentPageReportTemplate="Showing {first} to {last} of {totalRecords} licenses"
 		>
 			<template #header>
@@ -336,29 +336,37 @@ const getStatusLabel = (status) => {
 			></Column>
 
 			<!-- Name column -->
-			<Column field="name" header="Name" sortable></Column>
+			<Column
+				field="name"
+				header="Name"
+				style="min-width: 14rem"
+				sortable
+			></Column>
 
 			<!-- WBS column -->
 			<Column
-				field="code"
+				field="wbs"
 				header="WBS"
+				style="min-width: 8rem"
 				sortable
-				style="min-width: 10rem"
 			></Column>
 
 			<!-- Price column -->
-			<Column field="price" header="Price" sortable style="min-width: 8rem">
+			<Column field="price" header="Price" sortable>
 				<template #body="slotProps">
 					{{ formatCurrency(slotProps.data.price) }}
 				</template>
 			</Column>
 
+			<!-- PO column -->
+			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
+
 			<!-- Status column -->
-			<Column field="inventoryStatus" header="Status" sortable>
+			<Column field="licenseStatus" header="Status" sortable>
 				<template #body="slotProps">
 					<Tag
-						:value="slotProps.data.inventoryStatus"
-						:severity="getStatusLabel(slotProps.data.inventoryStatus)"
+						:value="slotProps.data.licenseStatus"
+						:severity="getStatusLabel(slotProps.data.licenseStatus)"
 					/>
 				</template>
 			</Column>
@@ -368,7 +376,7 @@ const getStatusLabel = (status) => {
 				field="expiryDate"
 				header="Expiry Date"
 				sortable
-				style="min-width: 10rem"
+				style="min-width: 8rem"
 			></Column>
 
 			<!-- Vendor column -->
@@ -419,6 +427,7 @@ const getStatusLabel = (status) => {
 		:modal="true"
 	>
 		<div class="flex flex-col gap-4">
+			<!-- name input on modal -->
 			<div>
 				<label for="name" class="block font-bold mb-3">Name</label>
 				<InputText
@@ -433,26 +442,37 @@ const getStatusLabel = (status) => {
 					>Name is required.</small
 				>
 			</div>
-			<div>
-				<label for="notes" class="block font-bold mb-3">Notes</label>
-				<Textarea
-					id="notes"
-					v-model="license.notes"
-					required="true"
-					rows="3"
-					cols="20"
-					fluid
-				/>
+
+			<!-- po and wbs on modal -->
+			<div class="grid grid-cols-12 gap-4">
+				<div class="col-span-6">
+					<label for="po" class="block font-bold mb-3">PO</label>
+					<InputText
+						id="po"
+						v-model="license.po"
+						mode="currency"
+						currency="EUR"
+						locale="en-US"
+						fluid
+					/>
+				</div>
+
+				<div class="col-span-6">
+					<label for="wbs" class="block font-bold mb-3">WBS</label>
+					<InputText id="wbs" v-model="license.wbs" fluid />
+				</div>
 			</div>
+
+			<!-- license status on modal -->
 			<div>
-				<label for="inventoryStatus" class="block font-bold mb-3"
+				<label for="licenseStatus" class="block font-bold mb-3"
 					>Inventory Status</label
 				>
 
 				<!-- optionValue value is from const statuses -->
 				<Select
-					id="inventoryStatus"
-					v-model="license.inventoryStatus"
+					id="licenseStatus"
+					v-model="license.licenseStatus"
 					:options="statuses"
 					optionLabel="label"
 					placeholder="Select a Status"
@@ -460,7 +480,7 @@ const getStatusLabel = (status) => {
 				></Select>
 			</div>
 
-			<!-- manufacturer and vendor select -->
+			<!-- vendor and manufacturer select -->
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-6">
 					<label for="vendor" class="block font-bold mb-3">Vendor</label>
@@ -505,49 +525,7 @@ const getStatusLabel = (status) => {
 				/>
 			</div>
 
-			<!-- categories radio buttons -->
-			<div>
-				<span class="block font-bold mb-4">Category</span>
-				<div class="grid grid-cols-12 gap-4">
-					<div class="flex items-center gap-2 col-span-6">
-						<RadioButton
-							id="artists"
-							v-model="license.category"
-							name="category"
-							value="Artists"
-						/>
-						<label for="artists">Artists</label>
-					</div>
-					<div class="flex items-center gap-2 col-span-6">
-						<RadioButton
-							id="renderfarm"
-							v-model="license.category"
-							name="category"
-							value="Renderfarm"
-						/>
-						<label for="renderfarm">Renderfarm</label>
-					</div>
-					<div class="flex items-center gap-2 col-span-6">
-						<RadioButton
-							id="monitoring"
-							v-model="license.category"
-							name="category"
-							value="Monitoring"
-						/>
-						<label for="monitoring">Monitoring</label>
-					</div>
-					<div class="flex items-center gap-2 col-span-6">
-						<RadioButton
-							id="finance"
-							v-model="license.category"
-							name="category"
-							value="Finance"
-						/>
-						<label for="finance">Finance</label>
-					</div>
-				</div>
-			</div>
-
+			<!-- price and quantity on modal -->
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-6">
 					<label for="price" class="block font-bold mb-3">Price</label>
@@ -560,6 +538,7 @@ const getStatusLabel = (status) => {
 						fluid
 					/>
 				</div>
+
 				<div class="col-span-6">
 					<label for="quantity" class="block font-bold mb-3">Quantity</label>
 					<InputNumber
@@ -570,8 +549,22 @@ const getStatusLabel = (status) => {
 					/>
 				</div>
 			</div>
+
+			<!-- notes on modal -->
+			<div>
+				<label for="notes" class="block font-bold mb-3">Notes</label>
+				<Textarea
+					id="note"
+					v-model="license.note"
+					required="true"
+					rows="3"
+					cols="20"
+					fluid
+				/>
+			</div>
 		</div>
 
+		<!-- cancel and save buttons on modal -->
 		<template #footer>
 			<Button
 				label="Cancel"

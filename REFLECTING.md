@@ -31,6 +31,10 @@
   }
 ```
 
+## ISSUES
+
+### SOLVED
+
 - Add Expiring date on Modals. DONE!
 
 - Paginator has rounded corners and table it self don't. DONE!
@@ -41,6 +45,8 @@
 
 - FIX the messages that are not appearing, when deleting, editing or saving changes on Licenses. The only thing was missing is `<Toast/>` right under the closing tag from `<DataTable></DataTable>`. DONE!
 
+### NOT SOLVED
+
 - Preselect on `Select` to show the current status of a License. (optionValue with `const = statuses` was the solution). However it has now a bug, when creating a new item, selected status is not saved. I've deleted for now `optionValue`. Need another solution.
 
 - Add Comments.
@@ -50,3 +56,5 @@
 - CANNOT register new components!!!
 
 - Add Filters from the first table.
+
+- WBS gets generated automatically, even when we put in our own one. PO behaves OK.
