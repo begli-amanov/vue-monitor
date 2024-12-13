@@ -22,6 +22,7 @@ const selectedLicenses = ref();
 // for search bar
 const filters = ref({
 	global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+	status: { value: null, matchMode: FilterMatchMode.EQUALS },
 });
 
 const submitted = ref(false);
@@ -80,8 +81,6 @@ const saveLicense = () => {
 				life: 3000,
 			});
 		} else {
-			license.value.id = createId();
-			license.value.wbs = createId();
 			license.value.licenseStatus = license.value.licenseStatus
 				? license.value.licenseStatus.value
 				: 'VALID';
@@ -131,15 +130,6 @@ const findIndexById = (id) => {
 	}
 
 	return index;
-};
-
-const createId = () => {
-	let id = '';
-	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	for (var i = 0; i < 5; i++) {
-		id += chars.charAt(Math.floor(Math.random() * chars.length));
-	}
-	return id;
 };
 
 const confirmDeleteSelected = () => {
@@ -299,19 +289,21 @@ const getStatusLabel = (status) => {
 		<!-- here begins data table itself -->
 		<DataTable
 			ref="dt"
-			v-model:selection="selectedLicenses"
+			dataKey="id"
 			:value="licenses"
+			v-model:selection="selectedLicenses"
+			v-model:filters="filters"
+			:filters="filters"
+			:globalFilterFields="'status'"
 			removableSort
 			resizableColumns
 			columnResizeMode="fit"
 			showGridlines
-			dataKey="id"
-			:filters="filters"
 			:rows="10"
 			paginator
 			paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 			:rowsPerPageOptions="[5, 10, 25]"
-			currentPageReportTemplate="Showing {first} to {last} of {totalRecords} licenses"
+			currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
 		>
 			<!-- search input -->
 			<template #header>
@@ -363,7 +355,12 @@ const getStatusLabel = (status) => {
 			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
 
 			<!-- Status column -->
-			<Column field="licenseStatus" header="Status" sortable>
+			<Column
+				field="licenseStatus"
+				header="Status"
+				style="min-width: 10rem"
+				sortable
+			>
 				<template #body="slotProps">
 					<Tag
 						:value="slotProps.data.licenseStatus"
@@ -572,13 +569,13 @@ const getStatusLabel = (status) => {
 				icon="pi pi-times"
 				outlined
 				@click="hideDialog"
-				class="modal-inline-component mt-5"
+				class="modal-button mt-5"
 			/>
 			<Button
 				label="Save"
 				icon="pi pi-save"
 				@click="saveLicense"
-				class="modal-inline-component mt-5"
+				class="modal-button mt-5"
 			/>
 		</template>
 	</Dialog>
@@ -603,14 +600,14 @@ const getStatusLabel = (status) => {
 				icon="pi pi-times"
 				outlined
 				@click="deleteLicenseDialog = false"
-				class="modal-inline-component"
+				class="modal-button"
 			/>
 
 			<Button
 				label="Yes"
 				icon="pi pi-check"
 				@click="deleteLicense"
-				class="modal-inline-component"
+				class="modal-button"
 			/>
 		</template>
 	</Dialog>
@@ -634,13 +631,13 @@ const getStatusLabel = (status) => {
 				icon="pi pi-times"
 				outlined
 				@click="deleteLicensesDialog = false"
-				class="modal-inline-component"
+				class="modal-button"
 			/>
 			<Button
 				label="Yes"
 				icon="pi pi-check"
 				@click="deleteSelectedLicenses"
-				class="modal-inline-component"
+				class="modal-button"
 			/>
 		</template>
 	</Dialog>
