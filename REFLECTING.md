@@ -59,6 +59,10 @@
 
 - CANNOT register new components!!!
 
-- Add Filters from the first table.
-
 - Change Top reference cards content
+
+- Add a clear button (option) to the search bar.
+
+## BACKLOG
+
+- Add Filters from the first table.

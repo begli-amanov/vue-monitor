@@ -279,7 +279,7 @@ const getStatusLabel = (status) => {
 					auto
 					:chooseButtonProps="{ severity: 'secondary' }"
 				/>
-				<!-- signout button, a better place for this button? -->
+				<!-- signout button. a better place for this button? -->
 				<Button label="Log Out" icon="pi pi-power-off" severity="danger" />
 			</template>
 		</Toolbar>
