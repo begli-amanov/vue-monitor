@@ -11,7 +11,6 @@ onMounted(() => {
 });
 
 const toast = useToast();
-const dt = ref();
 const licenses = ref();
 const license = ref({});
 const licenseDialog = ref(false);
@@ -288,7 +287,6 @@ const getStatusLabel = (status) => {
 
 		<!-- here begins data table itself -->
 		<DataTable
-			ref="dt"
 			dataKey="id"
 			:value="licenses"
 			v-model:selection="selectedLicenses"
