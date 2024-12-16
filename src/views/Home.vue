@@ -10,21 +10,20 @@ onMounted(() => {
 	LicenseService.getLicenses().then((data) => (licenses.value = data));
 });
 
-const toast = useToast();
 const licenses = ref();
 const license = ref({});
+const toast = useToast();
+const submitted = ref(false);
+const selectedLicenses = ref();
 const licenseDialog = ref(false);
 const deleteLicenseDialog = ref(false);
 const deleteLicensesDialog = ref(false);
-const selectedLicenses = ref();
 
-// for search bar
+// for search bar. it controls conditions for searching/filtering.
 const filters = ref({
 	global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 	status: { value: null, matchMode: FilterMatchMode.EQUALS },
 });
-
-const submitted = ref(false);
 
 const statuses = ref([
 	{ label: 'VALID', value: 'VALID' },
@@ -287,19 +286,19 @@ const getStatusLabel = (status) => {
 
 		<!-- here begins data table itself -->
 		<DataTable
-			dataKey="id"
+			:rows="10"
 			:value="licenses"
-			v-model:selection="selectedLicenses"
 			:filters="filters"
+			:rowsPerPageOptions="[5, 10, 25]"
+			paginator
+			dataKey="id"
 			removableSort
+			showGridlines
 			resizableColumns
 			columnResizeMode="fit"
-			showGridlines
-			:rows="10"
-			paginator
-			paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-			:rowsPerPageOptions="[5, 10, 25]"
+			v-model:selection="selectedLicenses"
 			currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+			paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 		>
 			<!-- search input -->
 			<template #header>
