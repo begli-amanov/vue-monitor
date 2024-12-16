@@ -47,14 +47,18 @@
 
 - WBS gets generated automatically, even when we put in our own one. PO behaves OK. Resolved trough deletion of `createID()` function, which was generation and saving a random ID and WBS in the `saveLicense()` function.
 
+- Add Comments. Done!
+
+- Actions Column is too wide. Need a find a way to make it as wide as content. Setting style="width: 1rem" on Actions Column did the job. DONE!
+
 ### NOT SOLVED
 
 - Preselect on `Select` to show the current status of a License. (optionValue with `const = statuses` was the solution). However it has now a bug, when creating a new item, selected status is not saved. I've deleted for now `optionValue`. Need another solution.
-
-- Add Comments.
 
 - While saving new expiry date, table shows an entire date including time.
 
 - CANNOT register new components!!!
 
 - Add Filters from the first table.
+
+- Change Top reference cards content

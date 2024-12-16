@@ -272,7 +272,7 @@ const getStatusLabel = (status) => {
 			<template #end>
 				<FileUpload
 					mode="basic"
-					accept="image/*"
+					accept="csv/*"
 					:maxFileSize="1000000"
 					label="Import"
 					customUpload
@@ -292,9 +292,7 @@ const getStatusLabel = (status) => {
 			dataKey="id"
 			:value="licenses"
 			v-model:selection="selectedLicenses"
-			v-model:filters="filters"
 			:filters="filters"
-			:globalFilterFields="'status'"
 			removableSort
 			resizableColumns
 			columnResizeMode="fit"
@@ -394,12 +392,11 @@ const getStatusLabel = (status) => {
 			></Column>
 
 			<!-- Actions column -->
-			<Column :exportable="false" header="Actions">
+			<Column :exportable="false" header="Actions" style="width: 1rem">
 				<template #body="slotProps">
 					<Button
 						icon="pi pi-pencil"
 						outlined
-						rounded
 						severity="success"
 						class="mr-2"
 						@click="editLicense(slotProps.data)"
@@ -407,7 +404,6 @@ const getStatusLabel = (status) => {
 					<Button
 						icon="pi pi-trash"
 						outlined
-						rounded
 						severity="danger"
 						@click="confirmDeleteLicense(slotProps.data)"
 					/>
@@ -569,13 +565,13 @@ const getStatusLabel = (status) => {
 				icon="pi pi-times"
 				outlined
 				@click="hideDialog"
-				class="modal-button mt-5"
+				class="modal-dialog-btn mt-5"
 			/>
 			<Button
 				label="Save"
 				icon="pi pi-save"
 				@click="saveLicense"
-				class="modal-button mt-5"
+				class="modal-dialog-btn mt-5"
 			/>
 		</template>
 	</Dialog>
@@ -600,14 +596,14 @@ const getStatusLabel = (status) => {
 				icon="pi pi-times"
 				outlined
 				@click="deleteLicenseDialog = false"
-				class="modal-button"
+				class="modal-dialog-btn"
 			/>
 
 			<Button
 				label="Yes"
 				icon="pi pi-check"
 				@click="deleteLicense"
-				class="modal-button"
+				class="modal-dialog-btn"
 			/>
 		</template>
 	</Dialog>
@@ -631,13 +627,13 @@ const getStatusLabel = (status) => {
 				icon="pi pi-times"
 				outlined
 				@click="deleteLicensesDialog = false"
-				class="modal-button"
+				class="modal-dialog-btn"
 			/>
 			<Button
 				label="Yes"
 				icon="pi pi-check"
 				@click="deleteSelectedLicenses"
-				class="modal-button"
+				class="modal-dialog-btn"
 			/>
 		</template>
 	</Dialog>
