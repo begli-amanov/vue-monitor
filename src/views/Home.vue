@@ -10,6 +10,7 @@ onMounted(() => {
 	LicenseService.getLicenses().then((data) => (licenses.value = data));
 });
 
+const dt = ref();
 const licenses = ref();
 const license = ref({});
 const toast = useToast();
@@ -79,6 +80,7 @@ const saveLicense = () => {
 				life: 3000,
 			});
 		} else {
+			license.value.id = createId();
 			license.value.licenseStatus = license.value.licenseStatus
 				? license.value.licenseStatus.value
 				: 'VALID';
@@ -99,6 +101,15 @@ const saveLicense = () => {
 const editLicense = (prod) => {
 	license.value = { ...prod };
 	licenseDialog.value = true;
+};
+
+const createId = () => {
+	let id = '';
+	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	for (var i = 0; i < 5; i++) {
+		id += chars.charAt(Math.floor(Math.random() * chars.length));
+	}
+	return id;
 };
 
 const confirmDeleteLicense = (prod) => {
@@ -174,9 +185,9 @@ const getStatusLabel = (status) => {
 					<div class="flex justify-between mb-4">
 						<div>
 							<span class="block text-surface-400 font-medium mb-4"
-								>Orders</span
+								>Recent Order</span
 							>
-							<div class="text-surface-0 font-medium !text-xl">152</div>
+							<div class="text-surface-0 font-medium !text-xl">Houdini</div>
 						</div>
 						<div
 							class="flex items-center justify-center bg-blue-100 rounded-border w-10 h-10"
@@ -184,8 +195,8 @@ const getStatusLabel = (status) => {
 							<i class="pi pi-shopping-cart text-blue-500 !text-xl" />
 						</div>
 					</div>
-					<span class="text-green-500 font-medium">24 new </span>
-					<span class="text-surface-400">since last visit</span>
+					<span class="text-green-500 font-medium">250 $</span>
+					<!-- <span class="text-surface-400">since last visit</span> -->
 				</div>
 			</div>
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
@@ -212,7 +223,7 @@ const getStatusLabel = (status) => {
 					<div class="flex justify-between mb-4">
 						<div>
 							<span class="block text-surface-400 font-medium mb-4"
-								>Customers</span
+								>Licenses</span
 							>
 							<div class="text-surface-0 font-medium !text-xl">28441</div>
 						</div>
@@ -222,8 +233,8 @@ const getStatusLabel = (status) => {
 							<i class="pi pi-inbox text-cyan-500 !text-xl" />
 						</div>
 					</div>
-					<span class="text-green-500 font-medium">520 </span>
-					<span class="text-surface-400">newly registered</span>
+					<span class="text-green-500 font-medium">52000$ </span>
+					<span class="text-surface-400">total sum spent</span>
 				</div>
 			</div>
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
@@ -291,6 +302,7 @@ const getStatusLabel = (status) => {
 			:filters="filters"
 			:rowsPerPageOptions="[5, 10, 25]"
 			paginator
+			ref="dt"
 			dataKey="id"
 			removableSort
 			showGridlines
