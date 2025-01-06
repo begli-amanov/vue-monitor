@@ -14,13 +14,6 @@
 
 - Label does not get aligned to the left when display flex used on parent element. It stays align in the middle/center. How to fix it?
 
-#TODO:
-
-1.  Make `h3` element bigger and add "Remember me" with checkbox and forgot password container. Done!
-
-2.  Find out how to change color of checkbox.
-    Done with some crazy rules on lines `244` till `288`.
-
 3.  Button and inputs still have outlines when focusing them with keyboard. DONE! We have to use `&` near each state e.g.
 
 ```
@@ -63,6 +56,16 @@
 
 - Add a clear button (option) to the search bar.
 
+- How to set up projects in GitHub
+
 ## BACKLOG
 
 - Add Filters from the first table.
+
+- Everyday backups (overridden)
+
+Bis paul wider da ist:
+
+Ideen generieren
+Project Beschreibung zufuegen
+Issues erstellen

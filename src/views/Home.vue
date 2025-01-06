@@ -53,6 +53,10 @@ const formatCurrency = (value) => {
 	return;
 };
 
+const clearInput = () => {
+	filters.value = '';
+};
+
 const openNew = () => {
 	license.value = {};
 	submitted.value = false;
@@ -184,6 +188,7 @@ const getStatusLabel = (status) => {
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
+							<!-- the nearest expiry -->
 							<span class="block text-surface-400 font-medium mb-4"
 								>Recent Order</span
 							>
@@ -234,7 +239,7 @@ const getStatusLabel = (status) => {
 						</div>
 					</div>
 					<span class="text-green-500 font-medium">52000$ </span>
-					<span class="text-surface-400">total sum spent</span>
+					<span class="text-surface-400">total sum spent in FSY</span>
 				</div>
 			</div>
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
@@ -242,7 +247,7 @@ const getStatusLabel = (status) => {
 					<div class="flex justify-between mb-4">
 						<div>
 							<span class="block text-surface-400 font-medium mb-4"
-								>Comments</span
+								>Nearest Expire</span
 							>
 							<div class="text-surface-0 font-medium !text-xl">152 Unread</div>
 						</div>
@@ -319,9 +324,18 @@ const getStatusLabel = (status) => {
 						<InputIcon>
 							<i class="pi pi-search" />
 						</InputIcon>
+
 						<InputText
 							v-model="filters['global'].value"
 							placeholder="Search..."
+						/>
+						<Button
+							v-if="filters['global'].value"
+							@click="clearInput"
+							class="clear-button"
+							type="button"
+							aria-label="Clear input"
+							label="✕"
 						/>
 					</IconField>
 				</div>
@@ -647,3 +661,22 @@ const getStatusLabel = (status) => {
 		</template>
 	</Dialog>
 </template>
+
+<style>
+.clear-button {
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	color: #ccc;
+	padding: 0;
+	outline: none;
+}
+.clear-button:hover {
+	color: #000;
+}
+</style>
