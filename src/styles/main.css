@@ -158,3 +158,20 @@ p {
 .p-paginator-current {
 	margin-right: 0.625rem;
 }
+
+/* hard coded styles for the input field and its clear icon  */
+.p-select-clear-icon {
+	inset-inline-end: 0.7rem !important;
+}
+
+.p-inputtext {
+	width: 18rem;
+}
+
+.p-select-clear-icon:hover {
+	cursor: pointer;
+}
+
+.p-iconfield .p-inputtext:not(:last-child) {
+	padding-inline-end: 2.2rem;
+}

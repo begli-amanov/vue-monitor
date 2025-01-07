@@ -1,6 +1,6 @@
 # vue-monitor
 
-## RETROSPECTIVE:
+## RETROSPECTIVE
 
 - Problem: Fix the bold font on `<p>` element.
 - Link to the top of the page ist too small.
@@ -14,9 +14,9 @@
 
 - Label does not get aligned to the left when display flex used on parent element. It stays align in the middle/center. How to fix it?
 
-3.  Button and inputs still have outlines when focusing them with keyboard. DONE! We have to use `&` near each state e.g.
+1. Button and inputs still have outlines when focusing them with keyboard. DONE! We have to use `&` near each state e.g.
 
-```
+``` css
   &:hover,
   &:active,
   &:focus {
@@ -54,7 +54,7 @@
 
 - Change Top reference cards content
 
-- Add a clear button (option) to the search bar.
+- Add a clear button (option) to the search bar. (SOLVED partially. Button appears as expected and it resets the table, but the text in the input field stays, and it also clears all filter, so it is not possible to search any further until the page gets refreshed. Need to adjust the behavior.)
 
 - How to set up projects in GitHub
 
@@ -63,9 +63,3 @@
 - Add Filters from the first table.
 
 - Everyday backups (overridden)
-
-Bis paul wider da ist:
-
-Ideen generieren
-Project Beschreibung zufuegen
-Issues erstellen
