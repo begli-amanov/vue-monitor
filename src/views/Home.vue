@@ -577,8 +577,26 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 
+			<!-- for now it is hard coded price as total price, which should be displayed in the table. it should reactively multiply license quantity with its price. as a result it should generate the total price of a license -->
+			<div class="grid grid-cols-12 gap-4">
+				<div class="col-span-12">
+					<label for="total-price" class="block font-bold mb-3"
+						>Total Price</label
+					>
+					<InputNumber
+						mode="currency"
+						currency="EUR"
+						id="total-price"
+						v-model="license.price"
+						integeronly
+						fluid
+					/>
+				</div>
+			</div>
+
 			<!-- notes on modal -->
-			<div>
+			<!-- commented out for now, till further justification -->
+			<!-- <div>
 				<label for="notes" class="block font-bold mb-3">Notes</label>
 				<Textarea
 					id="note"
@@ -588,7 +606,7 @@ const getStatusLabel = (status) => {
 					cols="20"
 					fluid
 				/>
-			</div>
+			</div> -->
 		</div>
 
 		<!-- cancel and save buttons on modal -->
