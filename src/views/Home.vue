@@ -53,8 +53,17 @@ const formatCurrency = (value) => {
 	return;
 };
 
+// this function does 2 out 3 actions well. It clears the search (input field), and resets the table. But new search request is then not possible.
+
+// FIXME: Reset the filters to its default value after emptying its value.
+
 const clearInput = () => {
+	document.getElementById('search-field').value = '';
 	filters.value = '';
+	return (filters.value = ref({
+		global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+		status: { value: null, matchMode: FilterMatchMode.EQUALS },
+	}));
 };
 
 const openNew = () => {
@@ -328,6 +337,7 @@ const getStatusLabel = (status) => {
 						<InputText
 							v-model="filters['global'].value"
 							placeholder="Search..."
+							id="search-field"
 						/>
 
 						<!-- clear icon as svg -->
