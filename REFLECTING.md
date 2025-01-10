@@ -16,13 +16,17 @@
 
 1. Button and inputs still have outlines when focusing them with keyboard. DONE! We have to use `&` near each state e.g.
 
-``` css
-  &:hover,
-  &:active,
-  &:focus {
-    outline: none;
-  }
+```css
+&:hover,
+&:active,
+&:focus {
+	outline: none;
+}
 ```
+
+## REFLECTING
+
+- It is possible to wrap a router link around some content and style it just like a component
 
 ## ISSUES
 

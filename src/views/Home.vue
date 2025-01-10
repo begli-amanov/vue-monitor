@@ -4,6 +4,7 @@ import { FilterMatchMode } from '@primevue/core/api';
 import Toolbar from 'primevue/toolbar';
 import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 // similar to Angular onInit function
 onMounted(() => {
@@ -193,7 +194,7 @@ const getStatusLabel = (status) => {
 	<!-- reference cards start here -->
 	<div class="bg-surface-950 px-4 pt-6">
 		<div class="grid grid-cols-12 gap-4">
-			<div class="col-span-12 md:col-span-6 lg:col-span-3">
+			<RouterLink to="/charts" class="col-span-12 md:col-span-6 lg:col-span-3">
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
@@ -212,7 +213,8 @@ const getStatusLabel = (status) => {
 					<span class="text-green-500 font-medium">250 $</span>
 					<!-- <span class="text-surface-400">since last visit</span> -->
 				</div>
-			</div>
+			</RouterLink>
+
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">

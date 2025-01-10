@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import Charts from '@/components/Charts.vue';
 import Login from '@/components/Login.vue';
 import Home from '@/views/Home.vue';
 import TableVue from '@/views/TableVue.vue';
@@ -22,6 +23,11 @@ const router = createRouter({
 			path: '/table',
 			name: 'table',
 			component: TableVue,
+		},
+		{
+			path: '/charts',
+			name: 'charts',
+			component: Charts,
 		},
 	],
 });
