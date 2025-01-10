@@ -142,22 +142,25 @@ const setQuarterBasedChartOptions = () => {
 </script>
 
 <template>
-	<!-- monthly-based chart -->
-	<div class="card">
-		<Chart
-			type="bar"
-			:data="monthlyBasedChartData"
-			:options="monthlyBasedChartOptions"
-			class="h-[30rem]"
-		/>
-	</div>
+	<div class="p-4">
+		<!-- monthly-based chart -->
+		<div class="card">
+			<Chart
+				type="bar"
+				:data="monthlyBasedChartData"
+				:options="monthlyBasedChartOptions"
+				class="h-[30rem]"
+			/>
+		</div>
 
-	<!-- quarter-based chart  -->
-	<div class="card">
-		<Chart
-			type="bar"
-			:data="quarterBasedChartData"
-			:options="quarterBasedChartOptions"
-		/>
+		<!-- quarter-based chart  -->
+		<div class="card">
+			<Chart
+				type="bar"
+				:data="quarterBasedChartData"
+				:options="quarterBasedChartOptions"
+				class="h-[60rem]"
+			/>
+		</div>
 	</div>
 </template>

@@ -50,6 +50,8 @@
 
 - How to set up projects in GitHub: Done!
 
+- BUG: When exploring Charts.vue page with developer tools, the quarter-based chart do not expand to its original size after closing the dev tools. It stays shrinked. FIXED: by adding `class="h-[60rem]"` to the `<Chart>` properties. Find out more about it!
+
 ### NOT SOLVED
 
 - Preselect on `Select` to show the current status of a License. (optionValue with `const = statuses` was the solution). However it has now a bug, when creating a new item, selected status is not saved. I've deleted for now `optionValue`. Need another solution.
@@ -61,8 +63,6 @@
 - Change Top reference cards content
 
 - Add a clear button (option) to the search bar. (SOLVED partially. Button appears as expected and it resets the table, but the text in the input field stays, and it also clears all filter, so it is not possible to search any further until the page gets refreshed. Need to adjust the behavior.)
-
-- BUG: When exploring Charts.vue page with developer tools, the quarter-based chart do not expand to its original size after closing the dev tools. It stays shrinked.
 
 ## BACKLOG
 
