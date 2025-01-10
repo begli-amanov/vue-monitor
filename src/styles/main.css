@@ -130,6 +130,14 @@ p {
 	align-items: center;
 }
 
+.card {
+	background: var(--p-surface-900);
+	border: 0.0625rem solid var(--p-surface-700);
+	padding: 2rem;
+	border-radius: 0.625rem;
+	margin-bottom: 1rem;
+}
+
 /* width of the login form card */
 .login-form {
 	width: 28rem;
@@ -164,7 +172,8 @@ p {
 	inset-inline-end: 0.7rem !important;
 }
 
-.p-inputtext {
+/* used ID of the input field to style it as wished */
+#search-field {
 	width: 18rem;
 }
 

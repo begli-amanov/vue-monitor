@@ -6,6 +6,7 @@ import './styles/main.css';
 // PrimeVue imports
 import { definePreset } from '@primevue/themes';
 import Aura from '@primevue/themes/aura';
+import Chart from 'primevue/chart';
 import PrimeVue from 'primevue/config';
 import ConfirmationService from 'primevue/confirmationservice';
 import DialogService from 'primevue/dialogservice';
@@ -59,6 +60,7 @@ app.mount('#app');
 app.use(ConfirmationService);
 app.use(ToastService);
 app.use(DialogService);
+app.component('Chart', Chart);
 
 app.use(PrimeVue, {
 	theme: {

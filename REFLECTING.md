@@ -48,6 +48,8 @@
 
 - Actions Column is too wide. Need a find a way to make it as wide as content. Setting style="width: 1rem" on Actions Column did the job. DONE!
 
+- How to set up projects in GitHub: Done!
+
 ### NOT SOLVED
 
 - Preselect on `Select` to show the current status of a License. (optionValue with `const = statuses` was the solution). However it has now a bug, when creating a new item, selected status is not saved. I've deleted for now `optionValue`. Need another solution.
@@ -60,7 +62,7 @@
 
 - Add a clear button (option) to the search bar. (SOLVED partially. Button appears as expected and it resets the table, but the text in the input field stays, and it also clears all filter, so it is not possible to search any further until the page gets refreshed. Need to adjust the behavior.)
 
-- How to set up projects in GitHub
+- BUG: When exploring Charts.vue page with developer tools, the quarter-based chart do not expand to its original size after closing the dev tools. It stays shrinked.
 
 ## BACKLOG
 
