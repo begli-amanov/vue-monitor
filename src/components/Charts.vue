@@ -23,8 +23,8 @@ const setMonthlyBasedChartData = () => {
 		datasets: [
 			{
 				label: 'My First dataset',
-				backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-				borderColor: documentStyle.getPropertyValue('--p-cyan-500'),
+				backgroundColor: documentStyle.getPropertyValue('--p-emerald-500'),
+				borderColor: documentStyle.getPropertyValue('--p-emerald-500'),
 				data: [65, 59, 80, 81, 56, 55, 40],
 			},
 		],
@@ -87,7 +87,7 @@ const setQuarterBasedChartData = () => {
 					'rgba(249, 115, 22, 0.2)',
 					'rgba(6, 182, 212, 0.2)',
 					'rgb(107, 114, 128, 0.2)',
-					'rgba(139, 92, 246 0.2)',
+					'rgba(139, 92, 246, 0.2)',
 				],
 				borderColor: [
 					'rgb(249, 115, 22)',
