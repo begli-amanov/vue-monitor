@@ -22,7 +22,7 @@ const setMonthlyBasedChartData = () => {
 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 		datasets: [
 			{
-				label: 'My First dataset',
+				label: 'Monthly',
 				backgroundColor: documentStyle.getPropertyValue('--p-emerald-500'),
 				borderColor: documentStyle.getPropertyValue('--p-emerald-500'),
 				data: [65, 59, 80, 81, 56, 55, 40],
@@ -47,6 +47,11 @@ const setMonthlyBasedChartOptions = () => {
 			legend: {
 				labels: {
 					color: textColor,
+					font: {
+						weight: 500,
+						size: 16,
+						family: 'Inter Var',
+					},
 				},
 			},
 		},
@@ -56,20 +61,25 @@ const setMonthlyBasedChartOptions = () => {
 					color: textColorSecondary,
 					font: {
 						weight: 500,
+						size: 16,
+						family: 'Inter Var',
 					},
 				},
 				grid: {
-					display: false,
-					drawBorder: false,
+					color: surfaceBorder,
 				},
 			},
 			y: {
 				ticks: {
 					color: textColorSecondary,
+					font: {
+						weight: 500,
+						family: 'Inter Var',
+					},
 				},
 				grid: {
 					color: surfaceBorder,
-					drawBorder: false,
+					drawBorder: true,
 				},
 			},
 		},
@@ -81,13 +91,13 @@ const setQuarterBasedChartData = () => {
 		labels: ['Q1', 'Q2', 'Q3', 'Q4'],
 		datasets: [
 			{
-				label: 'Sales',
+				label: 'Quarters',
 				data: [540, 325, 702, 620],
 				backgroundColor: [
-					'rgba(249, 115, 22, 0.2)',
-					'rgba(6, 182, 212, 0.2)',
-					'rgb(107, 114, 128, 0.2)',
-					'rgba(139, 92, 246, 0.2)',
+					'rgba(249, 115, 22, 0.4)',
+					'rgba(6, 182, 212, 0.4)',
+					'rgb(107, 114, 128, 0.4)',
+					'rgba(139, 92, 246, 0.4)',
 				],
 				borderColor: [
 					'rgb(249, 115, 22)',
@@ -111,10 +121,17 @@ const setQuarterBasedChartOptions = () => {
 	);
 
 	return {
+		maintainAspectRatio: false,
+		aspectRatio: 0.8,
 		plugins: {
 			legend: {
 				labels: {
 					color: textColor,
+					font: {
+						weight: 500,
+						size: 16,
+						family: 'Inter Var',
+					},
 				},
 			},
 		},
@@ -122,18 +139,27 @@ const setQuarterBasedChartOptions = () => {
 			x: {
 				ticks: {
 					color: textColorSecondary,
+					font: {
+						weight: 500,
+						size: 16,
+						family: 'Inter Var',
+					},
 				},
 				grid: {
 					color: surfaceBorder,
 				},
 			},
 			y: {
-				beginAtZero: true,
 				ticks: {
 					color: textColorSecondary,
+					font: {
+						weight: 500,
+						family: 'Inter Var',
+					},
 				},
 				grid: {
 					color: surfaceBorder,
+					drawBorder: true,
 				},
 			},
 		},
@@ -142,7 +168,22 @@ const setQuarterBasedChartOptions = () => {
 </script>
 
 <template>
-	<div class="p-4">
+	<div class="pt-6 p-4">
+		<!-- toolbar starts here -->
+		<Toolbar class="mb-4">
+			<template #start>
+				<RouterLink to="/">
+					<Button label="Home" icon="pi pi-home" class="mr-2" />
+				</RouterLink>
+			</template>
+
+			<template #end>
+				<!-- signout button. a better place for this button? -->
+				<RouterLink to="/login">
+					<Button label="Log Out" icon="pi pi-power-off" severity="danger" />
+				</RouterLink>
+			</template>
+		</Toolbar>
 		<!-- monthly-based chart -->
 		<div class="card">
 			<Chart
@@ -159,7 +200,7 @@ const setQuarterBasedChartOptions = () => {
 				type="bar"
 				:data="quarterBasedChartData"
 				:options="quarterBasedChartOptions"
-				class="h-[60rem]"
+				class="h-[40rem]"
 			/>
 		</div>
 	</div>

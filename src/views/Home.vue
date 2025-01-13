@@ -200,9 +200,9 @@ const getStatusLabel = (status) => {
 						<div>
 							<!-- the nearest expiry -->
 							<span class="block text-surface-400 font-medium mb-4"
-								>Recent Order</span
+								>Order Volumes</span
 							>
-							<div class="text-surface-0 font-medium !text-xl">Houdini</div>
+							<div class="text-surface-0 font-medium !text-xl">Charts</div>
 						</div>
 						<div
 							class="flex items-center justify-center bg-blue-100 rounded-border w-10 h-10"
@@ -260,7 +260,7 @@ const getStatusLabel = (status) => {
 							<span class="block text-surface-400 font-medium mb-4"
 								>Nearest Expire</span
 							>
-							<div class="text-surface-0 font-medium !text-xl">152 Unread</div>
+							<div class="text-surface-0 font-medium !text-xl">AUTODESK</div>
 						</div>
 						<div
 							class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-border"
@@ -268,15 +268,14 @@ const getStatusLabel = (status) => {
 							<i class="pi pi-comment text-purple-500 !text-xl" />
 						</div>
 					</div>
-					<span class="text-green-500 font-medium">85 </span>
-					<span class="text-surface-400">responded</span>
+					<span class="text-green-500 font-medium">23-03-2023 </span>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- toolbar starts here -->
 	<div class="bg-surface-950 p-4">
+		<!-- toolbar starts here -->
 		<Toolbar class="mb-4">
 			<template #start>
 				<Button
@@ -389,15 +388,28 @@ const getStatusLabel = (status) => {
 				sortable
 			></Column>
 
+			<!-- PO column -->
+			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
+
 			<!-- Price column -->
-			<Column field="price" header="Price" style="min-width: 8rem" sortable>
+			<Column
+				field="price"
+				header="Total Price"
+				style="min-width: 8rem"
+				sortable
+			>
 				<template #body="slotProps">
-					{{ formatCurrency(slotProps.data.price) }}
+					{{ formatCurrency(slotProps.data.totalPrice) }}
 				</template>
 			</Column>
 
-			<!-- PO column -->
-			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
+			<!-- Expiry column -->
+			<Column
+				field="expiryDate"
+				header="Expiry Date"
+				sortable
+				style="min-width: 8rem"
+			></Column>
 
 			<!-- Status column -->
 			<Column
@@ -413,14 +425,6 @@ const getStatusLabel = (status) => {
 					/>
 				</template>
 			</Column>
-
-			<!-- Expiry column -->
-			<Column
-				field="expiryDate"
-				header="Expiry Date"
-				sortable
-				style="min-width: 8rem"
-			></Column>
 
 			<!-- Vendor column -->
 			<Column
@@ -569,10 +573,12 @@ const getStatusLabel = (status) => {
 			<!-- price and quantity on modal -->
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-6">
-					<label for="price" class="block font-bold mb-3">Price</label>
+					<label for="unit-price" class="block font-bold mb-3"
+						>Unit Price</label
+					>
 					<InputNumber
-						id="price"
-						v-model="license.price"
+						id="unit-price"
+						v-model="license.unitPrice"
 						mode="currency"
 						currency="EUR"
 						locale="en-US"
@@ -601,7 +607,7 @@ const getStatusLabel = (status) => {
 						mode="currency"
 						currency="EUR"
 						id="total-price"
-						v-model="license.price"
+						v-model="license.totalPrice"
 						integeronly
 						fluid
 					/>

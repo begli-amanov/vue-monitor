@@ -14,13 +14,13 @@
 
 - Label does not get aligned to the left when display flex used on parent element. It stays align in the middle/center. How to fix it?
 
-1. Button and inputs still have outlines when focusing them with keyboard. DONE! We have to use `&` near each state e.g.
+1. Buttons and inputs still have outlines when focusing them with keyboard. DONE! We have to use `&` near each state e.g.
 
 ```css
 &:hover,
 &:active,
 &:focus {
-	outline: none;
+ outline: none;
 }
 ```
 
@@ -67,5 +67,4 @@
 ## BACKLOG
 
 - Add Filters from the first table.
-
-- Everyday backups (overridden)
+- Weekly backups (overridden)
