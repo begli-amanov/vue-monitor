@@ -19,13 +19,26 @@ const setMonthlyBasedChartData = () => {
 	const documentStyle = getComputedStyle(document.documentElement);
 
 	return {
-		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+		labels: [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December',
+		],
 		datasets: [
 			{
 				label: 'Monthly',
 				backgroundColor: documentStyle.getPropertyValue('--p-emerald-500'),
 				borderColor: documentStyle.getPropertyValue('--p-emerald-500'),
-				data: [65, 59, 80, 81, 56, 55, 40],
+				data: [65, 59, 80, 81, 56, 55, 40, 90, 15, 24, 25, 36],
 			},
 		],
 	};
@@ -44,6 +57,17 @@ const setMonthlyBasedChartOptions = () => {
 		maintainAspectRatio: false,
 		aspectRatio: 0.8,
 		plugins: {
+			tooltip: {
+				titleFont: {
+					family: 'Arial', // Font family for the tooltip title
+					size: 14, // Font size for the tooltip title
+				},
+				bodyFont: {
+					family: 'Inter Var', // Font family for the tooltip body
+					size: 14, // Font size for the tooltip body
+				},
+			},
+
 			legend: {
 				labels: {
 					color: textColor,
@@ -124,6 +148,17 @@ const setQuarterBasedChartOptions = () => {
 		maintainAspectRatio: false,
 		aspectRatio: 0.8,
 		plugins: {
+			tooltip: {
+				titleFont: {
+					family: 'Arial', // Font family for the tooltip title
+					size: 14, // Font size for the tooltip title
+				},
+				bodyFont: {
+					family: 'Inter Var', // Font family for the tooltip body
+					size: 14, // Font size for the tooltip body
+				},
+			},
+
 			legend: {
 				labels: {
 					color: textColor,
