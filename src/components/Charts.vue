@@ -61,7 +61,7 @@ const setMonthlyBasedChartOptions = () => {
 					color: textColorSecondary,
 					font: {
 						weight: 500,
-						size: 16,
+						size: 14,
 						family: 'Inter Var',
 					},
 				},
@@ -141,7 +141,7 @@ const setQuarterBasedChartOptions = () => {
 					color: textColorSecondary,
 					font: {
 						weight: 500,
-						size: 16,
+						size: 14,
 						family: 'Inter Var',
 					},
 				},
