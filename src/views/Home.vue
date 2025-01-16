@@ -190,81 +190,75 @@ const getStatusLabel = (status) => {
 	<!-- reference cards start here -->
 	<div class="bg-surface-950 px-4 pt-6">
 		<div class="grid grid-cols-12 gap-4">
+			<!-- charts card-->
 			<RouterLink to="/charts" class="col-span-12 md:col-span-6 lg:col-span-3">
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
-							<!-- the nearest expiry -->
-							<span class="block text-surface-400 font-medium mb-4"
-								>Order Volumes</span
-							>
 							<div class="text-surface-0 font-medium !text-xl">Charts</div>
 						</div>
 						<div
 							class="flex items-center justify-center bg-blue-100 rounded-border w-10 h-10"
 						>
-							<i class="pi pi-shopping-cart text-blue-500 !text-xl" />
+							<i class="pi pi-chart-bar text-blue-600 !text-xl" />
 						</div>
 					</div>
-					<span class="text-green-500 font-medium">250 $</span>
-					<!-- <span class="text-surface-400">since last visit</span> -->
+					<span class="text-green-500 font-medium">Quarter - Month</span>
 				</div>
 			</RouterLink>
+
+			<!-- expires next card -->
+			<div class="col-span-12 md:col-span-6 lg:col-span-3">
+				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
+					<div class="flex justify-between mb-4">
+						<div>
+							<div class="text-surface-0 font-medium !text-xl">
+								Expires next
+							</div>
+						</div>
+						<div
+							class="flex items-center justify-center bg-orange-100 rounded-border w-10 h-10"
+						>
+							<i class="pi pi-clock text-orange-600 !text-xl" />
+						</div>
+					</div>
+					<span class="text-green-500 font-medium">23-03-2023 </span>
+					<span class="text-surface-400">PR3183421</span>
+				</div>
+			</div>
+
+			<!-- value card -->
+			<div class="col-span-12 md:col-span-6 lg:col-span-3">
+				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
+					<div class="flex justify-between mb-4">
+						<div>
+							<div class="text-surface-0 font-medium !text-xl">Value</div>
+						</div>
+						<div
+							class="w-10 h-10 flex items-center justify-center bg-cyan-100 rounded-border"
+						>
+							<i class="pi pi-cart-plus text-cyan-600 !text-xl" />
+						</div>
+					</div>
+					<span class="text-green-500 font-medium">52000$ </span>
+				</div>
+			</div>
 
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
 						<div>
-							<span class="block text-surface-400 font-medium mb-4"
-								>Revenue</span
-							>
-							<div class="text-surface-0 font-medium !text-xl">$2.100</div>
-						</div>
-						<div
-							class="flex items-center justify-center bg-orange-100 rounded-border w-10 h-10"
-						>
-							<i class="pi pi-map-marker text-orange-500 !text-xl" />
-						</div>
-					</div>
-					<span class="text-green-500 font-medium">%52+ </span>
-					<span class="text-surface-400">since last week</span>
-				</div>
-			</div>
-			<div class="col-span-12 md:col-span-6 lg:col-span-3">
-				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
-					<div class="flex justify-between mb-4">
-						<div>
-							<span class="block text-surface-400 font-medium mb-4"
-								>Licenses</span
-							>
-							<div class="text-surface-0 font-medium !text-xl">28441</div>
-						</div>
-						<div
-							class="w-10 h-10 flex items-center justify-center bg-cyan-100 rounded-border"
-						>
-							<i class="pi pi-inbox text-cyan-500 !text-xl" />
-						</div>
-					</div>
-					<span class="text-green-500 font-medium">52000$ </span>
-					<span class="text-surface-400">total sum spent in FSY</span>
-				</div>
-			</div>
-			<div class="col-span-12 md:col-span-6 lg:col-span-3">
-				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
-					<div class="flex justify-between mb-4">
-						<div>
-							<span class="block text-surface-400 font-medium mb-4"
-								>Nearest Expire</span
-							>
-							<div class="text-surface-0 font-medium !text-xl">AUTODESK</div>
+							<div class="text-surface-0 font-medium !text-xl">
+								Recent Purchase
+							</div>
 						</div>
 						<div
 							class="w-10 h-10 flex items-center justify-center bg-purple-100 rounded-border"
 						>
-							<i class="pi pi-comment text-purple-500 !text-xl" />
+							<i class="pi pi-wallet text-purple-600 !text-xl" />
 						</div>
 					</div>
-					<span class="text-green-500 font-medium">23-03-2023 </span>
+					<span class="text-green-500 font-medium">PR3183432 </span>
 				</div>
 			</div>
 		</div>
@@ -299,11 +293,11 @@ const getStatusLabel = (status) => {
 					chooseLabel="Import"
 					class="mr-2"
 					auto
-					:chooseButtonProps="{ severity: 'secondary' }"
+					:chooseButtonProps="{ severity: 'primary' }"
 				/>
 				<!-- signout button. a better place for this button? -->
 				<RouterLink to="/login">
-					<Button label="Log Out" icon="pi pi-power-off" severity="danger" />
+					<Button label="Out" icon="pi pi-power-off" severity="danger" />
 				</RouterLink>
 			</template>
 		</Toolbar>

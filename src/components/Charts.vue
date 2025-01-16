@@ -215,7 +215,7 @@ const setQuarterBasedChartOptions = () => {
 			<template #end>
 				<!-- signout button. a better place for this button? -->
 				<RouterLink to="/login">
-					<Button label="Log Out" icon="pi pi-power-off" severity="danger" />
+					<Button label="Out" icon="pi pi-power-off" severity="danger" />
 				</RouterLink>
 			</template>
 		</Toolbar>
