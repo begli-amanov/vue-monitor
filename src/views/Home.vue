@@ -59,8 +59,8 @@ const formatCurrency = (value) => {
 // FIXME: Reset the filters to its default value after emptying its value.
 
 const clearInput = () => {
-	filters.value = '';
-	return (document.getElementById('search-field').value = '');
+	filters.value.global.value = null;
+	document.getElementById('search-field').value = '';
 };
 
 const openNew = () => {
