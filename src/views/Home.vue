@@ -8,7 +8,7 @@ import { RouterLink } from 'vue-router';
 
 // similar to Angular onInit function
 onMounted(() => {
-	LicenseService.getLicenses().then((data) => (licenses.value = data));
+	LicenseService.getLicenses().then((data) => (licenses.value = data.licenses));
 });
 
 const dt = ref();
