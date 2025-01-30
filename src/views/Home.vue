@@ -56,10 +56,6 @@ const formatCurrency = (value) => {
 	return;
 };
 
-// this function does 2 out of 3 actions well. It clears the search text (input field), and resets the table. But new search request is then not possible.
-
-// FIXME: Reset the filters to its default value after emptying its value.
-
 const clearInput = () => {
 	filters.value.global.value = null;
 	document.getElementById('search-field').value = '';
