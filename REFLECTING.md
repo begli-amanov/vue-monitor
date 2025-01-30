@@ -52,19 +52,38 @@
 
 - BUG: When exploring Charts.vue page with developer tools, the quarter-based chart do not expand to its original size after closing the dev tools. It stays shrinked. FIXED: by adding `class="h-[60rem]"` to the `<Chart>` properties. Find out more about it!
 
+- Change Top reference cards content
+
 ### NOT SOLVED
 
 - Preselect on `Select` to show the current status of a License. (optionValue with `const = statuses` was the solution). However it has now a bug, when creating a new item, selected status is not saved. I've deleted for now `optionValue`. Need another solution.
 
-- While saving new expiry date, table shows an entire date including time.
-
 - CANNOT register new components!!!
-
-- Change Top reference cards content
 
 - Add a clear button (option) to the search bar. (SOLVED partially. Button appears as expected and it resets the table, but the text in the input field stays, and it also clears all filter, so it is not possible to search any further until the page gets refreshed. Need to adjust the behavior.)
 
 ## BACKLOG
 
+- While saving new expiry date, table shows an entire date including time.
 - Add Filters from the first table.
 - Weekly backups (overridden)
+
+!IMPORTANT:
+
+1. docker compose build
+2. docker compose up -d
+
+That way, we assure, that the latest image is on use.
+
+TODO: ASK PAUL IF THIS IS GOING TO CONFLICT WITH IDS FROM HIS BACKEND
+
+``` TypeScript
+const createId = () => {
+ let id = '';
+ var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+ for (var i = 0; i < 5; i++) {
+  id += chars.charAt(Math.floor(Math.random() * chars.length));
+ }
+ return id;
+};
+```

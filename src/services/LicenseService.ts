@@ -1,6 +1,6 @@
 export const LicenseService = {
-	getLicenses() {
-		const url = 'http://localhost:8080/license/list?page=0&perPage=20'; // Replace with your actual URL
+	getListOfLicenses() {
+		const url = 'http://localhost:8080/license/list?page=0&perPage=20';
 		return fetch(url)
 			.then((response) => {
 				if (!response.ok) {
