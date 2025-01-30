@@ -8,7 +8,9 @@ import { RouterLink } from 'vue-router';
 
 // similar to Angular onInit function
 onMounted(() => {
-	LicenseService.getLicenses().then((data) => (licenses.value = data.licenses));
+	LicenseService.getListOfLicenses().then(
+		(data) => (licenses.value = data.licenses)
+	);
 });
 
 const dt = ref();
@@ -79,9 +81,9 @@ const saveLicense = () => {
 
 	if (license?.value.name?.trim()) {
 		if (license.value.id) {
-			license.value.licenseStatus = license.value.licenseStatus.value
-				? license.value.licenseStatus.value
-				: license.value.licenseStatus;
+			license.value.status = license.value.status.value
+				? license.value.status.value
+				: license.value.status;
 			licenses.value[findIndexById(license.value.id)] = license.value;
 			toast.add({
 				severity: 'success',
@@ -91,8 +93,8 @@ const saveLicense = () => {
 			});
 		} else {
 			license.value.id = createId();
-			license.value.licenseStatus = license.value.licenseStatus
-				? license.value.licenseStatus.value
+			license.value.status = license.value.status
+				? license.value.status.value
 				: 'VALID';
 			licenses.value.push(license.value);
 			toast.add({
@@ -382,14 +384,9 @@ const getStatusLabel = (status) => {
 			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
 
 			<!-- Price column -->
-			<Column
-				field="price"
-				header="Total Price"
-				style="min-width: 8rem"
-				sortable
-			>
+			<Column field="price" header="Price" style="min-width: 8rem" sortable>
 				<template #body="slotProps">
-					{{ formatCurrency(slotProps.data.totalPrice) }}
+					{{ formatCurrency(slotProps.data.price) }}
 				</template>
 			</Column>
 
@@ -402,16 +399,11 @@ const getStatusLabel = (status) => {
 			></Column>
 
 			<!-- Status column -->
-			<Column
-				field="licenseStatus"
-				header="Status"
-				style="min-width: 10rem"
-				sortable
-			>
+			<Column field="status" header="Status" style="min-width: 10rem" sortable>
 				<template #body="slotProps">
 					<Tag
-						:value="slotProps.data.licenseStatus"
-						:severity="getStatusLabel(slotProps.data.licenseStatus)"
+						:value="slotProps.data.status"
+						:severity="getStatusLabel(slotProps.data.status)"
 					/>
 				</template>
 			</Column>
@@ -500,16 +492,17 @@ const getStatusLabel = (status) => {
 
 			<!-- license status on modal -->
 			<div>
-				<label for="licenseStatus" class="block font-bold mb-3"
+				<label for="status" class="block font-bold mb-3"
 					>Inventory Status</label
 				>
 
 				<!-- optionValue value is from const statuses -->
 				<Select
-					id="licenseStatus"
-					v-model="license.licenseStatus"
+					id="status"
+					v-model="license.status"
 					:options="statuses"
 					optionLabel="label"
+					optionValue="value"
 					placeholder="Select a Status"
 					fluid
 				></Select>
@@ -568,7 +561,7 @@ const getStatusLabel = (status) => {
 					>
 					<InputNumber
 						id="unit-price"
-						v-model="license.unitPrice"
+						v-model="license.price"
 						mode="currency"
 						currency="EUR"
 						locale="en-US"
@@ -588,7 +581,7 @@ const getStatusLabel = (status) => {
 			</div>
 
 			<!-- for now it is hard coded price as total price, which should be displayed in the table. it should reactively multiply license quantity with its price. as a result it should generate the total price of a license -->
-			<div class="grid grid-cols-12 gap-4">
+			<!-- <div class="grid grid-cols-12 gap-4">
 				<div class="col-span-12">
 					<label for="total-price" class="block font-bold mb-3"
 						>Total Price</label
@@ -602,7 +595,7 @@ const getStatusLabel = (status) => {
 						fluid
 					/>
 				</div>
-			</div>
+			</div> -->
 
 			<!-- notes on modal -->
 			<!-- commented out for now, till further justification -->
