@@ -598,8 +598,7 @@ const getStatusLabel = (status) => {
 			</div> -->
 
 			<!-- notes on modal -->
-			<!-- commented out for now, till further justification -->
-			<!-- <div>
+			<div>
 				<label for="notes" class="block font-bold mb-3">Notes</label>
 				<Textarea
 					id="note"
@@ -609,7 +608,7 @@ const getStatusLabel = (status) => {
 					cols="20"
 					fluid
 				/>
-			</div> -->
+			</div>
 		</div>
 
 		<!-- cancel and save buttons on modal -->
