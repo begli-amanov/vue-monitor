@@ -102,7 +102,6 @@ const saveLicense = async () => {
 				.toISOString()
 				.split('T')[0];
 		}
-
 		// Check if the license has an ID (existing license)
 		if (license.value.id) {
 			// Update the status if it has a value property
@@ -133,12 +132,10 @@ const saveLicense = async () => {
 			});
 			console.log('License created:', license.value);
 		}
-
 		// Prepare the data to be sent to the server
 		const payload = {
 			license: { ...license.value, totalPrice: totalPrice.value },
 		};
-
 		// Log the object being sent to the server
 		console.log('Object being sent:', payload);
 
@@ -151,12 +148,10 @@ const saveLicense = async () => {
 				},
 				body: JSON.stringify(payload),
 			});
-
 			// Check if the response is not ok
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
-
 			// Parse the response data
 			const data = await response.json();
 			console.log('License saved successfully:', data);
@@ -164,7 +159,6 @@ const saveLicense = async () => {
 			// Log any errors that occur during the fetch operation
 			console.error('There was a problem with the fetch operation:', error);
 		}
-
 		// Close the license dialog and reset the license object
 		licenseDialog.value = false;
 		license.value = {};
@@ -181,16 +175,38 @@ const confirmDeleteLicense = (prod) => {
 	deleteLicenseDialog.value = true;
 };
 
-const deleteLicense = () => {
-	licenses.value = licenses.value.filter((val) => val.id !== license.value.id);
-	deleteLicenseDialog.value = false;
-	license.value = {};
-	toast.add({
-		severity: 'success',
-		summary: 'Successful',
-		detail: 'License Deleted',
-		life: 3000,
-	});
+const deleteLicense = async () => {
+	try {
+		// Send a DELETE request to the endpoint with the license ID
+		const response = await fetch(
+			`http://localhost:8080/license/delete/${license.value.id}`,
+			{
+				method: 'DELETE',
+			}
+		);
+		// Check if the response is not ok, then throw an error
+		if (!response.ok) {
+			throw new Error('Network response was not ok');
+		}
+		// Filter out the deleted license from the licenses array
+		licenses.value = licenses.value.filter(
+			(val) => val.id !== license.value.id
+		);
+		// Close the delete license dialog
+		deleteLicenseDialog.value = false;
+		// Reset the license object
+		license.value = {};
+		// Show a success toast message
+		toast.add({
+			severity: 'success',
+			summary: 'Successful',
+			detail: 'License Deleted',
+			life: 3000,
+		});
+	} catch (error) {
+		// Log any errors that occur during the fetch operation
+		console.error('There was a problem with the fetch operation:', error);
+	}
 };
 
 const findIndexById = (id) => {

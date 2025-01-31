@@ -152,10 +152,6 @@ p {
 	min-width: 49%;
 }
 
-.p-dialog-content {
-	--p-dialog-content-padding: 0 1.25rem;
-}
-
 .p-dialog-header {
 	--p-dialog-header-padding: 1.1rem;
 }
