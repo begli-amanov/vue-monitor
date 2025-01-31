@@ -113,8 +113,13 @@ const saveLicense = async () => {
 			console.log('License created:', license.value);
 		}
 
+		// Prepare the data to be sent to the server
+		const payload = {
+			license: { ...license.value },
+		};
+
 		// Log the object being sent to the server
-		console.log('Object being sent:', license.value);
+		console.log('Object being sent:', payload);
 
 		try {
 			// Send the license data to the server
@@ -123,7 +128,7 @@ const saveLicense = async () => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify(license.value),
+				body: JSON.stringify(payload),
 			});
 
 			// Check if the response is not ok
@@ -149,15 +154,6 @@ const editLicense = (prod) => {
 	license.value = { ...prod };
 	licenseDialog.value = true;
 };
-
-// const createId = () => {
-// 	let id = '';
-// 	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-// 	for (var i = 0; i < 5; i++) {
-// 		id += chars.charAt(Math.floor(Math.random() * chars.length));
-// 	}
-// 	return id;
-// };
 
 const confirmDeleteLicense = (prod) => {
 	license.value = prod;
