@@ -59,7 +59,7 @@ const formatCurrency = (value) => {
 	if (value) {
 		return value.toLocaleString('en-US', {
 			style: 'currency',
-			currency: 'USD',
+			currency: 'EUR',
 		});
 	}
 	return '';
@@ -414,10 +414,27 @@ const getStatusLabel = (status) => {
 			<!-- PO column -->
 			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
 
-			<!-- Price column -->
-			<Column field="price" header="Price" style="min-width: 8rem" sortable>
+			<!-- Unit price column -->
+			<!-- <Column
+				field="price"
+				header="Unit Price"
+				style="min-width: 8rem"
+				sortable
+			>
 				<template #body="slotProps">
-					{{ formatCurrency(slotProps.data.price) }}
+					{{ formatCurrency(slotProps.data.unitPrice) }}
+				</template>
+			</Column> -->
+
+			<!-- Total price column -->
+			<Column
+				field="price"
+				header="Total Price"
+				style="min-width: 8rem"
+				sortable
+			>
+				<template #body="slotProps">
+					{{ formatCurrency(slotProps.data.totalPrice) }}
 				</template>
 			</Column>
 
@@ -591,7 +608,7 @@ const getStatusLabel = (status) => {
 					>
 					<InputNumber
 						id="unit-price"
-						v-model="license.price"
+						v-model="license.unitPrice"
 						mode="currency"
 						currency="EUR"
 						locale="en-US"
@@ -610,8 +627,8 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 
-			<!-- for now it is hard coded price as total price, which should be displayed in the table. it should reactively multiply license quantity with its price. as a result it should generate the total price of a license -->
-			<!-- <div class="grid grid-cols-12 gap-4">
+			<!-- total price of a license -->
+			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-12">
 					<label for="total-price" class="block font-bold mb-3"
 						>Total Price</label
@@ -625,7 +642,7 @@ const getStatusLabel = (status) => {
 						fluid
 					/>
 				</div>
-			</div> -->
+			</div>
 
 			<!-- notes on modal -->
 			<div>

@@ -147,8 +147,17 @@ p {
 	border: 0.0625rem solid var(--p-surface-700);
 }
 
+/* modal dialog style */
 .modal-dialog-btn {
 	min-width: 49%;
+}
+
+.p-dialog-content {
+	--p-dialog-content-padding: 0 1.25rem;
+}
+
+.p-dialog-header {
+	--p-dialog-header-padding: 1.1rem;
 }
 
 /* primevue classes overridden */
