@@ -6,7 +6,7 @@ import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
-// similar to Angular onInit function
+// Fetch licenses when the component is mounted
 onMounted(async () => {
 	try {
 		const data = await LicenseService.getListOfLicenses();
@@ -21,6 +21,7 @@ onMounted(async () => {
 	}
 });
 
+// References to various reactive variables
 const dt = ref();
 const licenses = ref([]);
 const license = ref({});
@@ -31,30 +32,34 @@ const licenseDialog = ref(false);
 const deleteLicenseDialog = ref(false);
 const deleteLicensesDialog = ref(false);
 
-// for search bar. it controls conditions for searching/filtering.
+// Filters for the search bar
 const filters = ref({
 	global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 	status: { value: null, matchMode: FilterMatchMode.EQUALS },
 });
 
+// Status options for the dropdown
 const statuses = ref([
 	{ label: 'VALID', value: 'VALID' },
 	{ label: 'EXPIRING SOON', value: 'EXPIRING SOON' },
 	{ label: 'EXPIRED', value: 'EXPIRED' },
 ]);
 
+// Vendor options for the dropdown
 const vendors = ref([
 	{ label: 'DVEAS', value: 'DVEAS' },
 	{ label: 'SIDEFX', value: 'SIDEFX' },
 	{ label: 'FOUNDRY', value: 'FOUNDRY' },
 ]);
 
+// Manufacturer options for the dropdown
 const manufacturers = ref([
 	{ label: 'AUTODESK', value: 'AUTODESK' },
 	{ label: 'SIDEFX', value: 'SIDEFX' },
 	{ label: 'FOUNDRY', value: 'FOUNDRY' },
 ]);
 
+// Function to format currency values to Euro
 const formatCurrency = (value) => {
 	if (value) {
 		return value.toLocaleString('en-US', {
@@ -65,22 +70,26 @@ const formatCurrency = (value) => {
 	return '';
 };
 
+// Function to clear the search input
 const clearInput = () => {
 	filters.value.global.value = null;
 	document.getElementById('search-field').value = '';
 };
 
+// Function to open the dialog for creating a new license
 const openNew = () => {
 	license.value = {};
 	submitted.value = false;
 	licenseDialog.value = true;
 };
 
+// Function to hide the dialog
 const hideDialog = () => {
 	licenseDialog.value = false;
 	submitted.value = false;
 };
 
+// Function to save the license
 const saveLicense = async () => {
 	// Mark the form as submitted
 	submitted.value = true;
@@ -115,7 +124,7 @@ const saveLicense = async () => {
 
 		// Prepare the data to be sent to the server
 		const payload = {
-			license: { ...license.value },
+			license: { ...license.value, totalPrice: totalPrice.value },
 		};
 
 		// Log the object being sent to the server
