@@ -111,6 +111,12 @@ const saveLicense = async () => {
 				: license.value.status;
 			// Update the license in the licenses array
 			licenses.value[findIndexById(license.value.id)] = license.value;
+			toast.add({
+				severity: 'success',
+				summary: 'Successful',
+				detail: 'License Created',
+				life: 3000,
+			});
 			console.log('License updated:', license.value);
 		} else {
 			// Set the status to 'VALID' if not already set
@@ -119,6 +125,12 @@ const saveLicense = async () => {
 				: 'VALID';
 			// Add the new license to the licenses array
 			licenses.value.push(license.value);
+			toast.add({
+				severity: 'success',
+				summary: 'Successful',
+				detail: 'License Updated',
+				life: 3000,
+			});
 			console.log('License created:', license.value);
 		}
 
