@@ -8,10 +8,24 @@ export const LicenseService = {
 				throw new Error('Network response was not ok');
 			}
 			const data = await response.json();
-			console.log(data); // Log the fetched data
+			console.log('Log the fetched data:', data); // Log the fetched data
 			return data;
 		} catch (error) {
 			console.error('There was a problem with the fetch operation:', error);
 		}
 	},
 };
+
+// toast.add({
+// 	severity: 'success',
+// 	summary: 'Successful',
+// 	detail: 'License Updated',
+// 	life: 3000,
+// });
+
+// toast.add({
+// 	severity: 'success',
+// 	summary: 'Successful',
+// 	detail: 'License Created',
+// 	life: 3000,
+// });

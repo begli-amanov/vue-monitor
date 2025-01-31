@@ -7,14 +7,22 @@ import { onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
 // similar to Angular onInit function
-onMounted(() => {
-	LicenseService.getListOfLicenses().then(
-		(data) => (licenses.value = data.licenses)
-	);
+onMounted(async () => {
+	try {
+		const data = await LicenseService.getListOfLicenses();
+		licenses.value = data.licenses;
+	} catch (error) {
+		console.error('Failed to fetch licenses:', error);
+		toast.add({
+			severity: 'error',
+			summary: 'Error',
+			detail: 'Failed to fetch licenses',
+		});
+	}
 });
 
 const dt = ref();
-const licenses = ref();
+const licenses = ref([]);
 const license = ref({});
 const toast = useToast();
 const submitted = ref(false);
@@ -48,12 +56,13 @@ const manufacturers = ref([
 ]);
 
 const formatCurrency = (value) => {
-	if (value)
+	if (value) {
 		return value.toLocaleString('en-US', {
 			style: 'currency',
-			currency: 'EUR',
+			currency: 'USD',
 		});
-	return;
+	}
+	return '';
 };
 
 const clearInput = () => {
@@ -72,7 +81,7 @@ const hideDialog = () => {
 	submitted.value = false;
 };
 
-const saveLicense = () => {
+const saveLicense = async () => {
 	submitted.value = true;
 
 	if (license?.value.name?.trim()) {
@@ -81,24 +90,35 @@ const saveLicense = () => {
 				? license.value.status.value
 				: license.value.status;
 			licenses.value[findIndexById(license.value.id)] = license.value;
-			toast.add({
-				severity: 'success',
-				summary: 'Successful',
-				detail: 'License Updated',
-				life: 3000,
-			});
+			console.log('License updated:', license.value);
 		} else {
 			license.value.id = createId();
 			license.value.status = license.value.status
 				? license.value.status.value
 				: 'VALID';
 			licenses.value.push(license.value);
-			toast.add({
-				severity: 'success',
-				summary: 'Successful',
-				detail: 'License Created',
-				life: 3000,
+			console.log('License created:', license.value);
+		}
+
+		console.log('Object being sent:', license.value);
+
+		try {
+			const response = await fetch('http://localhost:8080/license/create', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(license.value),
 			});
+
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
+			}
+
+			const data = await response.json();
+			console.log('License saved successfully:', data);
+		} catch (error) {
+			console.error('There was a problem with the fetch operation:', error);
 		}
 
 		licenseDialog.value = false;
@@ -498,7 +518,6 @@ const getStatusLabel = (status) => {
 					v-model="license.status"
 					:options="statuses"
 					optionLabel="label"
-					optionValue="value"
 					placeholder="Select a Status"
 					fluid
 				></Select>
