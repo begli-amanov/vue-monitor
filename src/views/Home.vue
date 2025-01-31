@@ -82,27 +82,42 @@ const hideDialog = () => {
 };
 
 const saveLicense = async () => {
+	// Mark the form as submitted
 	submitted.value = true;
 
+	// Check if the license name is not empty
 	if (license?.value.name?.trim()) {
+		// Format the expiryDate to 'yyyy-mm-dd' if it exists
+		if (license.value.expiryDate) {
+			license.value.expiryDate = new Date(license.value.expiryDate)
+				.toISOString()
+				.split('T')[0];
+		}
+
+		// Check if the license has an ID (existing license)
 		if (license.value.id) {
+			// Update the status if it has a value property
 			license.value.status = license.value.status.value
 				? license.value.status.value
 				: license.value.status;
+			// Update the license in the licenses array
 			licenses.value[findIndexById(license.value.id)] = license.value;
 			console.log('License updated:', license.value);
 		} else {
-			license.value.id = createId();
+			// Set the status to 'VALID' if not already set
 			license.value.status = license.value.status
 				? license.value.status.value
 				: 'VALID';
+			// Add the new license to the licenses array
 			licenses.value.push(license.value);
 			console.log('License created:', license.value);
 		}
 
+		// Log the object being sent to the server
 		console.log('Object being sent:', license.value);
 
 		try {
+			// Send the license data to the server
 			const response = await fetch('http://localhost:8080/license/create', {
 				method: 'POST',
 				headers: {
@@ -111,16 +126,20 @@ const saveLicense = async () => {
 				body: JSON.stringify(license.value),
 			});
 
+			// Check if the response is not ok
 			if (!response.ok) {
 				throw new Error('Network response was not ok');
 			}
 
+			// Parse the response data
 			const data = await response.json();
 			console.log('License saved successfully:', data);
 		} catch (error) {
+			// Log any errors that occur during the fetch operation
 			console.error('There was a problem with the fetch operation:', error);
 		}
 
+		// Close the license dialog and reset the license object
 		licenseDialog.value = false;
 		license.value = {};
 	}
@@ -131,14 +150,14 @@ const editLicense = (prod) => {
 	licenseDialog.value = true;
 };
 
-const createId = () => {
-	let id = '';
-	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	for (var i = 0; i < 5; i++) {
-		id += chars.charAt(Math.floor(Math.random() * chars.length));
-	}
-	return id;
-};
+// const createId = () => {
+// 	let id = '';
+// 	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+// 	for (var i = 0; i < 5; i++) {
+// 		id += chars.charAt(Math.floor(Math.random() * chars.length));
+// 	}
+// 	return id;
+// };
 
 const confirmDeleteLicense = (prod) => {
 	license.value = prod;
@@ -564,7 +583,7 @@ const getStatusLabel = (status) => {
 					fluid
 					iconDisplay="input"
 					inputId="license.expiryDate"
-					dateFormat="dd-mm-yy"
+					dateFormat="yy-mm-dd"
 				/>
 			</div>
 
