@@ -494,7 +494,7 @@ const getStatusLabel = (status) => {
 		<Toast />
 	</div>
 
-	<!-- modal dialog for edition and creation of a new license -->
+	<!-- Modal dialog for edition and creation of a new license -->
 	<Dialog
 		v-model:visible="licenseDialog"
 		:style="{ width: '450px' }"
@@ -502,7 +502,7 @@ const getStatusLabel = (status) => {
 		:modal="true"
 	>
 		<div class="flex flex-col gap-4">
-			<!-- name input on modal -->
+			<!-- Name input on modal -->
 			<div>
 				<label for="name" class="block font-bold mb-3">Name</label>
 				<InputText
@@ -518,33 +518,26 @@ const getStatusLabel = (status) => {
 				>
 			</div>
 
-			<!-- po and wbs on modal -->
+			<!-- PO on modal -->
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-6">
 					<label for="po" class="block font-bold mb-3">PO</label>
-					<InputText
-						id="po"
-						v-model="license.po"
-						mode="currency"
-						currency="EUR"
-						locale="en-US"
-						fluid
-					/>
+					<InputText id="po" v-model="license.po" fluid />
 				</div>
 
+				<!-- WBS on modal -->
 				<div class="col-span-6">
 					<label for="wbs" class="block font-bold mb-3">WBS</label>
 					<InputText id="wbs" v-model="license.wbs" fluid />
 				</div>
 			</div>
 
-			<!-- license status on modal -->
 			<div>
 				<label for="status" class="block font-bold mb-3"
 					>Inventory Status</label
 				>
 
-				<!-- optionValue value is from const statuses -->
+				<!-- License status selects on modal -->
 				<Select
 					id="status"
 					v-model="license.status"
@@ -555,7 +548,7 @@ const getStatusLabel = (status) => {
 				></Select>
 			</div>
 
-			<!-- vendor and manufacturer select -->
+			<!-- Vendor select on modal-->
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-6">
 					<label for="vendor" class="block font-bold mb-3">Vendor</label>
@@ -569,6 +562,8 @@ const getStatusLabel = (status) => {
 						fluid
 					></Select>
 				</div>
+
+				<!-- Vendor select on modal -->
 				<div class="col-span-6">
 					<label for="manufacturer" class="block font-bold mb-3"
 						>Manufacturer</label
@@ -585,11 +580,9 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 
-			<!-- datepicker -->
+			<!-- Date picker -->
 			<div class="flex-auto">
-				<label for="license.expiryDate" class="font-bold block mb-2">
-					Expiry Date
-				</label>
+				<label class="font-bold block mb-2"> Expiry Date </label>
 				<DatePicker
 					v-model="license.expiryDate"
 					showIcon
@@ -600,14 +593,12 @@ const getStatusLabel = (status) => {
 				/>
 			</div>
 
-			<!-- price and quantity on modal -->
+			<!-- Unit price on modal -->
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-6">
-					<label for="unit-price" class="block font-bold mb-3"
-						>Unit Price</label
-					>
+					<label for="unitPrice" class="block font-bold mb-3">Unit Price</label>
 					<InputNumber
-						id="unit-price"
+						id="unitPrice"
 						v-model="license.unitPrice"
 						mode="currency"
 						currency="EUR"
@@ -616,6 +607,7 @@ const getStatusLabel = (status) => {
 					/>
 				</div>
 
+				<!-- Quantity on modal -->
 				<div class="col-span-6">
 					<label for="quantity" class="block font-bold mb-3">Quantity</label>
 					<InputNumber
@@ -627,16 +619,16 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 
-			<!-- total price of a license -->
+			<!-- Total price of a license -->
 			<div class="grid grid-cols-12 gap-4">
 				<div class="col-span-12">
-					<label for="total-price" class="block font-bold mb-3"
+					<label for="totalPrice" class="block font-bold mb-3"
 						>Total Price</label
 					>
 					<InputNumber
+						id="totalPrice"
 						mode="currency"
 						currency="EUR"
-						id="total-price"
 						v-model="license.totalPrice"
 						integeronly
 						fluid
@@ -644,9 +636,9 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 
-			<!-- notes on modal -->
+			<!-- Notes on modal -->
 			<div>
-				<label for="notes" class="block font-bold mb-3">Notes</label>
+				<label for="note" class="block font-bold mb-3">Notes</label>
 				<Textarea
 					id="note"
 					v-model="license.note"
@@ -658,7 +650,7 @@ const getStatusLabel = (status) => {
 			</div>
 		</div>
 
-		<!-- cancel and save buttons on modal -->
+		<!-- Cancel button on modal -->
 		<template #footer>
 			<Button
 				label="Cancel"
@@ -667,6 +659,8 @@ const getStatusLabel = (status) => {
 				@click="hideDialog"
 				class="modal-dialog-btn mt-5"
 			/>
+
+			<!-- Save button on modal -->
 			<Button
 				label="Save"
 				icon="pi pi-save"
@@ -676,7 +670,7 @@ const getStatusLabel = (status) => {
 		</template>
 	</Dialog>
 
-	<!-- single license deletion modal dialog -->
+	<!-- Single license deletion modal dialog -->
 	<Dialog
 		v-model:visible="deleteLicenseDialog"
 		:style="{ width: '450px' }"
