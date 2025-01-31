@@ -220,10 +220,10 @@ const getStatusLabel = (status) => {
 </script>
 
 <template>
-	<!-- reference cards start here -->
+	<!-- Reference cards start here -->
 	<div class="bg-surface-950 px-4 pt-6">
 		<div class="grid grid-cols-12 gap-4">
-			<!-- charts card-->
+			<!-- Charts card-->
 			<RouterLink to="/charts" class="col-span-12 md:col-span-6 lg:col-span-3">
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
@@ -240,7 +240,7 @@ const getStatusLabel = (status) => {
 				</div>
 			</RouterLink>
 
-			<!-- expires next card -->
+			<!-- Expires next card -->
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
@@ -260,7 +260,7 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 
-			<!-- value card -->
+			<!-- Value card -->
 			<div class="col-span-12 md:col-span-6 lg:col-span-3">
 				<div class="bg-surface-900 shadow p-4 rounded-border card-border">
 					<div class="flex justify-between mb-4">
@@ -298,7 +298,7 @@ const getStatusLabel = (status) => {
 	</div>
 
 	<div class="bg-surface-950 p-4">
-		<!-- toolbar starts here -->
+		<!-- Toolbar starts here -->
 		<Toolbar class="mb-4">
 			<template #start>
 				<Button
@@ -328,14 +328,14 @@ const getStatusLabel = (status) => {
 					auto
 					:chooseButtonProps="{ severity: 'primary' }"
 				/>
-				<!-- signout button. a better place for this button? -->
+				<!-- Signout button. a better place for this button? -->
 				<RouterLink to="/login">
 					<Button label="Out" icon="pi pi-power-off" severity="danger" />
 				</RouterLink>
 			</template>
 		</Toolbar>
 
-		<!-- here begins data table itself -->
+		<!-- Here begins data table itself -->
 		<DataTable
 			:rows="10"
 			:value="licenses"
@@ -352,7 +352,7 @@ const getStatusLabel = (status) => {
 			currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
 			paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 		>
-			<!-- search input -->
+			<!-- Search input -->
 			<template #header>
 				<div class="flex flex-wrap gap-2 items-center justify-center">
 					<IconField>
@@ -366,7 +366,7 @@ const getStatusLabel = (status) => {
 							id="search-field"
 						/>
 
-						<!-- clear icon as svg -->
+						<!-- Clear icon as svg -->
 						<svg
 							width="14"
 							height="14"
@@ -387,7 +387,7 @@ const getStatusLabel = (status) => {
 				</div>
 			</template>
 
-			<!-- no matching results message -->
+			<!-- No matching results message -->
 			<template #empty> No licenses found. </template>
 			<Column
 				selectionMode="multiple"
