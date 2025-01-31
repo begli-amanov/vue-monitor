@@ -113,7 +113,7 @@ const saveLicense = async () => {
 			toast.add({
 				severity: 'success',
 				summary: 'Successful',
-				detail: 'License Created',
+				detail: 'License Updated',
 				life: 3000,
 			});
 			console.log('License updated:', license.value);
@@ -127,7 +127,7 @@ const saveLicense = async () => {
 			toast.add({
 				severity: 'success',
 				summary: 'Successful',
-				detail: 'License Updated',
+				detail: 'License Created',
 				life: 3000,
 			});
 			console.log('License created:', license.value);
