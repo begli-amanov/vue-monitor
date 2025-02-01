@@ -1,4 +1,5 @@
 <script setup>
+// Import necessary modules and components
 import { LicenseService } from '@/services/LicenseService';
 import { FilterMatchMode } from '@primevue/core/api';
 import Toolbar from 'primevue/toolbar';
@@ -165,16 +166,19 @@ const saveLicense = async () => {
 	}
 };
 
+// Function to edit a license
 const editLicense = (licenseData) => {
 	license.value = { ...licenseData };
 	licenseDialog.value = true;
 };
 
+// Function to confirm deletion of a single license
 const confirmDeleteLicense = (licenseData) => {
 	license.value = licenseData;
 	deleteLicenseDialog.value = true;
 };
 
+// Function to delete a single license
 const deleteLicense = async () => {
 	try {
 		// Send a DELETE request to the endpoint with the license ID
@@ -209,6 +213,7 @@ const deleteLicense = async () => {
 	}
 };
 
+// Function to find the index of a license by its ID
 const findIndexById = (id) => {
 	let index = -1;
 	for (let i = 0; i < licenses.value.length; i++) {
@@ -220,11 +225,13 @@ const findIndexById = (id) => {
 	return index;
 };
 
+// Function to confirm deletion of selected licenses
 const confirmDeleteSelected = () => {
 	// Open the delete licenses confirmation dialog
 	deleteLicensesDialog.value = true;
 };
 
+// Function to delete selected licenses
 const deleteSelectedLicenses = async () => {
 	try {
 		// Get the IDs of the selected licenses
@@ -273,6 +280,7 @@ const deleteSelectedLicenses = async () => {
 	}
 };
 
+// Function to get the status label for a license
 const getStatusLabel = (status) => {
 	switch (status) {
 		case 'VALID':
@@ -773,7 +781,7 @@ const getStatusLabel = (status) => {
 		</template>
 	</Dialog>
 
-	<!-- multiple licenses deletion modal dialog -->
+	<!-- Multiple licenses deletion modal dialog -->
 	<Dialog
 		v-model:visible="deleteLicensesDialog"
 		:style="{ width: '450px' }"
@@ -803,5 +811,3 @@ const getStatusLabel = (status) => {
 		</template>
 	</Dialog>
 </template>
-
-<style></style>
