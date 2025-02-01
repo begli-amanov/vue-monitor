@@ -165,13 +165,13 @@ const saveLicense = async () => {
 	}
 };
 
-const editLicense = (prod) => {
-	license.value = { ...prod };
+const editLicense = (licenseData) => {
+	license.value = { ...licenseData };
 	licenseDialog.value = true;
 };
 
-const confirmDeleteLicense = (prod) => {
-	license.value = prod;
+const confirmDeleteLicense = (licenseData) => {
+	license.value = licenseData;
 	deleteLicenseDialog.value = true;
 };
 
@@ -217,26 +217,60 @@ const findIndexById = (id) => {
 			break;
 		}
 	}
-
 	return index;
 };
 
 const confirmDeleteSelected = () => {
+	// Open the delete licenses confirmation dialog
 	deleteLicensesDialog.value = true;
 };
 
-const deleteSelectedLicenses = () => {
-	licenses.value = licenses.value.filter(
-		(val) => !selectedLicenses.value.includes(val)
-	);
-	deleteLicensesDialog.value = false;
-	selectedLicenses.value = null;
-	toast.add({
-		severity: 'success',
-		summary: 'Successful',
-		detail: 'Licenses Deleted',
-		life: 3000,
-	});
+const deleteSelectedLicenses = async () => {
+	try {
+		// Get the IDs of the selected licenses
+		const licenseIds = selectedLicenses.value.map((license) => license.id);
+
+		// Log the request details for debugging
+		console.log('Request URL: http://localhost:8080/license/delete');
+		console.log('Request Method: DELETE');
+		console.log('Request Body:', JSON.stringify({ ids: licenseIds }));
+
+		// Send a DELETE request to the endpoint with the selected license IDs
+		const response = await fetch('http://localhost:8080/license/delete', {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ ids: licenseIds }),
+		});
+
+		// Check if the response is not ok, then throw an error
+		if (!response.ok) {
+			throw new Error('Network response was not ok');
+		}
+
+		// Filter out the deleted licenses from the licenses array
+		licenses.value = licenses.value.filter(
+			(val) => !licenseIds.includes(val.id)
+		);
+
+		// Close the delete licenses dialog
+		deleteLicensesDialog.value = false;
+
+		// Reset the selected licenses
+		selectedLicenses.value = null;
+
+		// Show a success toast message
+		toast.add({
+			severity: 'success',
+			summary: 'Successful',
+			detail: 'Licenses Deleted',
+			life: 3000,
+		});
+	} catch (error) {
+		// Log any errors that occur during the fetch operation
+		console.error('There was a problem with the fetch operation:', error);
+	}
 };
 
 const getStatusLabel = (status) => {
