@@ -15,17 +15,3 @@ export const LicenseService = {
 		}
 	},
 };
-
-// toast.add({
-// 	severity: 'success',
-// 	summary: 'Successful',
-// 	detail: 'License Updated',
-// 	life: 3000,
-// });
-
-// toast.add({
-// 	severity: 'success',
-// 	summary: 'Successful',
-// 	detail: 'License Created',
-// 	life: 3000,
-// });

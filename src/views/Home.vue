@@ -493,17 +493,13 @@ const getStatusLabel = (status) => {
 			<!-- PO column -->
 			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
 
-			<!-- Unit price column -->
-			<!-- <Column
-				field="price"
-				header="Unit Price"
+			<!-- Quantity column -->
+			<Column
+				field="quantity"
+				header="Quantity"
 				style="min-width: 8rem"
 				sortable
-			>
-				<template #body="slotProps">
-					{{ formatCurrency(slotProps.data.unitPrice) }}
-				</template>
-			</Column> -->
+			></Column>
 
 			<!-- Total price column -->
 			<Column
@@ -539,14 +535,6 @@ const getStatusLabel = (status) => {
 			<Column
 				field="vendor"
 				header="Vendor"
-				sortable
-				style="min-width: 10rem"
-			></Column>
-
-			<!-- Manufacturer column -->
-			<Column
-				field="manufacturer"
-				header="Manufacturer"
 				sortable
 				style="min-width: 10rem"
 			></Column>
