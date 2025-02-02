@@ -482,6 +482,9 @@ const getStatusLabel = (status) => {
 				sortable
 			></Column>
 
+			<!-- PO column -->
+			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
+
 			<!-- WBS column -->
 			<Column
 				field="wbs"
@@ -489,9 +492,6 @@ const getStatusLabel = (status) => {
 				style="min-width: 10rem"
 				sortable
 			></Column>
-
-			<!-- PO column -->
-			<Column field="po" header="PO" style="min-width: 8rem" sortable></Column>
 
 			<!-- Quantity column -->
 			<Column
@@ -599,12 +599,10 @@ const getStatusLabel = (status) => {
 				</div>
 			</div>
 
-			<div>
-				<label for="status" class="block font-bold mb-3"
-					>Inventory Status</label
-				>
+			<!-- License status selects on modal -->
+			<!-- <div>
+				<label for="status" class="block font-bold mb-3">License Status</label>
 
-				<!-- License status selects on modal -->
 				<Select
 					id="status"
 					v-model="license.status"
@@ -613,7 +611,7 @@ const getStatusLabel = (status) => {
 					placeholder="Select a Status"
 					fluid
 				></Select>
-			</div>
+			</div> -->
 
 			<!-- Vendor select on modal-->
 			<div class="grid grid-cols-12 gap-4">
