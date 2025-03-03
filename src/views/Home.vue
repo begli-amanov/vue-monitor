@@ -10,8 +10,8 @@ import { RouterLink } from 'vue-router';
 // Fetch licenses when the component is mounted
 onMounted(async () => {
 	try {
-		const data = await LicenseService.getListOfLicenses();
-		licenses.value = data.licenses;
+		const data = LicenseService.getMockedLicenseData();
+		licenses.value = data;
 	} catch (error) {
 		console.error('Failed to fetch licenses:', error);
 		toast.add({
